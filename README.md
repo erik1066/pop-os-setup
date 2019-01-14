@@ -1,6 +1,6 @@
 # Pop!_OS 18.04 Setup for Microservice and Web App Developers
 
-Instructions to make [Pop!_OS](https://system76.com/pop) setup fast and efficient for developing microservices in C# (.NET Core), Java, and NodeJS, and web front-ends in React. These instructions should also work for Ubuntu and most Ubuntu-based Linux distributions.
+Instructions to make [Pop!_OS](https://system76.com/pop) setup fast and efficient for developing microservices in C# (.NET Core), Java, Python, and NodeJS, as well as web front-ends in React. These instructions should also work for Ubuntu and most Ubuntu-based Linux distributions.
 
 ## Update the OS and install common tools
 
@@ -96,6 +96,7 @@ The following VS Code extensions are handy:
 1. [VS Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) - allows simultaneous editing of code files by multiple authors, like Google Docs
 1. [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 1. [JavaScript Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
+1. [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 
 There are some excellent dark theme alternatives to the VS Code default theme:
 
@@ -111,6 +112,14 @@ sudo apt install openjdk-8-jdk-headless maven
 
 Run `javac -version` and look for `javac 1.8.0_191` (or newer) to verify success
 
+## Python 
+
+```bash
+sudo apt install python3-minimal
+```
+
+Run `python3 -V` and look for `Python 3.6.7` (or newer) to verify success
+
 ## NodeJS
 
 ```bash
@@ -119,7 +128,13 @@ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 sudo apt install nodejs
 ```
 
-Run `npm --version` and look for `6.4.1` (or newer) to verify success
+Run `npm --version` and look for `6.5.0` (or newer) to verify success
+
+Periodically, you will want to update NPM to the latest available version. Do so by running:
+
+```bash
+sudo npm install -g npm
+```
 
 ## .NET Core
 
@@ -132,7 +147,7 @@ sudo apt update && sudo apt install dotnet-sdk-2.2 -y
 rm -f packages-microsoft-prod.deb
 ```
 
-Run `dotnet --version` and look for `2.2.101` (or newer) to verify success
+Run `dotnet --version` and look for `2.2.102` (or newer) to verify success
 
 ### Optional: Disable .NET Core telemetry
 
