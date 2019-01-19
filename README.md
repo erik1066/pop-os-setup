@@ -120,6 +120,8 @@ sudo apt install python3-minimal
 
 Run `python3 -V` and look for `Python 3.6.7` (or newer) to verify success
 
+To install Anaconda Python instead, see https://linuxhint.com/install_anaconda_python_ubuntu_1804/.
+
 ## NodeJS
 
 ```bash
@@ -216,7 +218,7 @@ See [Customizing Git Configuration](https://www.git-scm.com/book/en/v2/Customizi
 Taken from https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/index.html. 
 
 1. Run `gpg --full-gen-key`
-1. Choose "RSA"
+1. Choose "RSA and RSA (default)"
 1. Choose 4096 bits
 1. Choose 2y (or a timeframe of your choosing)
 1. Provide the other required inputs
@@ -224,6 +226,7 @@ Taken from https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits
 1. Copy the GPG key ID that starts with `sec`. E.g. in `sec   rsa4096/30F2B65B9246B6CA 2017-08-18 [SC]`, the key ID is `30F2B65B9246B6CA`
 1. Run `gpg --armor --export 30F2B65B9246B6CA`
 1. Run `git config --global user.signingkey 30F2B65B9246B6CA`
+1. [Add the key to your GitHub account](https://help.github.com/articles/adding-a-new-gpg-key-to-your-github-account/)
 
 To sign commits, the only difference is the addition of the `-S` flag:
 
