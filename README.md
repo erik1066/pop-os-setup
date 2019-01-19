@@ -112,6 +112,14 @@ sudo apt install openjdk-8-jdk-headless maven
 
 Run `javac -version` and look for `javac 1.8.0_191` (or newer) to verify success
 
+## Go
+
+```bash
+sudo apt install golang-go
+```
+
+Run `go version` and look for `go version go1.10.4 linux/amd64` (or newer) to verify success
+
 ## Python 
 
 ```bash
