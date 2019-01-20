@@ -47,12 +47,12 @@ When working with Dropbox, React, and NodeJS, you may run into this error: "User
 
 ## Spring Tool Suite (STS) 4:
 
-1. Visit `https://spring.io/tools`
+1. Visit https://spring.io/tools
 1. Download the "STS4" Linux package to the "Downloads" folder
 1. Run `cd ~/Downloads`
 1. Run `sudo tar -xvf spring-tool-suite-4-4.0.1.RELEASE-e4.9.0-linux.gtk.x86_64.tar.gz` (replace the filename shown here with the one you downloaded, if newer)
 1. Run `sudo nano /usr/share/applications/STS.desktop`
-1. Type the following:
+1. Type the following, replacing `Exec=` with the actual location of STS:
 
 ```ini
 [Desktop Entry]
@@ -103,6 +103,42 @@ There are some excellent dark theme alternatives to the VS Code default theme:
 1. [One Monokai Theme](https://marketplace.visualstudio.com/items?itemName=azemoh.one-monokai)
 1. [Atom One Dark Theme](https://marketplace.visualstudio.com/items?itemName=akamud.vscode-theme-onedark)
 1. [Material Theme](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme)
+
+
+## Postman
+
+1. Visit https://www.getpostman.com/downloads/
+1. Download the 64-bit Linux package to the "Downloads" folder
+1. Extract the contents of the package to a `Postman` directory underneath `Downloads`
+1. Run `sudo nano /usr/share/applications/Postman.desktop`
+1. Type the following, replacing `Exec=` with the actual location of Postman:
+
+```ini
+[Desktop Entry]
+Name=Postman
+Comment=Postman
+Exec=/home/yourusername/Downloads/Postman/Postman
+StartupNotify=true
+Terminal=false
+Type=Application
+Keywords=Development
+Categories=Development
+```
+
+6. Press `CTRL`+`X` to exit Nano and save when prompted
+1. Navigate to **Activities** on the main PopOS desktop and select **Show Applications**
+1. Right-click on **Postman** and select **Add to favorites**
+
+### Alternative: Use Snap
+
+Ubuntu Snap can also be used to install Postman on Pop!_OS 18.04. However, Postman won't respect your theme selection when installed via Snap.
+
+```bash
+sudo apt install snapd
+snap install postman
+```
+
+The command `/snap/bin/postman` will start Postman. To add Postman to `PATH`, run `nano ~/.profile`, add `export PATH=$PATH:/snap/bin` at the bottom of the file, save, and log out and in again. You can then run `postman` from the command prompt.
 
 ## Java and Maven
 
