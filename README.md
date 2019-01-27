@@ -97,6 +97,7 @@ The following VS Code extensions are handy:
 1. [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 1. [JavaScript Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
 1. [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+1. [Go](https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go)
 
 There are some excellent dark theme alternatives to the VS Code default theme:
 
