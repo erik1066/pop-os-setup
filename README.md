@@ -163,7 +163,7 @@ Run `go version` and look for `go version go1.10.4 linux/amd64` (or newer) to ve
 sudo apt install python3-minimal
 ```
 
-Run `python3 -V` and look for `Python 3.6.7` (or newer) to verify success
+Run `python3 -V` and look for `Python 3.7.1` (or newer) to verify success
 
 To install Anaconda Python instead, see https://linuxhint.com/install_anaconda_python_ubuntu_1804/.
 
