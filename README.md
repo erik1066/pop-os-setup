@@ -175,7 +175,7 @@ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 sudo apt install nodejs
 ```
 
-Run `npm --version` and look for `6.5.0` (or newer) to verify success
+Run `npm --version` and look for `6.7.0` (or newer) to verify success
 
 Periodically, you will want to update NPM to the latest available version. Do so by running:
 
