@@ -7,7 +7,7 @@ Instructions to make [Pop!_OS](https://system76.com/pop) setup fast and efficien
 The first thing you should do is get the latest security updates:
 
 ```bash
-sudo apt update && sudo dist-upgrade -y
+sudo apt update && sudo apt dist-upgrade -y
 ```
 
 Next, install some common tools you'll need later:
@@ -194,7 +194,7 @@ sudo apt update && sudo apt install dotnet-sdk-2.2 -y
 rm -f packages-microsoft-prod.deb
 ```
 
-Run `dotnet --version` and look for `2.2.104` (or newer) to verify success
+Run `dotnet --version` and look for `2.2.105` (or newer) to verify success
 
 ### Optional: Disable .NET Core telemetry
 
