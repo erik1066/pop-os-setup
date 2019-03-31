@@ -37,6 +37,10 @@ I'm not a fan of the default font rendering in Pop!_OS. I also happen to enjoy u
 1. **Fonts** > **Hinting** > Set to "Full"
 1. **Fonts** > **Antialiasing** > Set to "Subpixel (for LCD screens)"
 
+You can also install the "Arc" theme for Gnome if you prefer a Dark Mode alternative:
+
+```sudo apt install arc-theme```
+
 ## Increase the inotify watch count
 
 When working with Dropbox, React, and NodeJS, you may run into this error: "User limit of inotify watches reached". The default limit for file watchers is 8,192. Increase this limit to something more reasonable:
