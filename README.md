@@ -229,13 +229,13 @@ sudo apt update
 sudo apt install docker-ce
 docker --version
 
-# Running "docker --version" should display "Docker version 18.09.3, build 774a1f4" or similar
+# Running "docker --version" should display "Docker version 18.09.4, build d14af54266" or similar
 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
-# Running "docker-compose --version" should display "docker-compose version 1.23.2, build 1110ad01" or similar
+# Running "docker-compose --version" should display "docker-compose version 1.24.0, build 0aa59064" or similar
 
 sudo usermod -aG docker $USER
 
