@@ -46,7 +46,7 @@ You can also install the "Arc" theme for Gnome if you prefer a Dark Mode alterna
 When working with Dropbox, React, and NodeJS, you may run into this error: "User limit of inotify watches reached". The default limit for file watchers is 8,192. Increase this limit to something more reasonable:
 
 1. Run `sudo gedit /etc/sysctl.conf`
-1. Add `fs.inotify.max_user_watches=100000` to the bottom of the file
+1. Add `fs.inotify.max_user_watches=10000000` to the bottom of the file
 1. Run `sudo sysctl -p` (or restart the OS)
 
 ## Spring Tool Suite (STS) 4:
