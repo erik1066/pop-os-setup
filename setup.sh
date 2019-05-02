@@ -32,7 +32,7 @@ dotnet --version
 echo "export DOTNET_CLI_TELEMETRY_OPTOUT=true" >> ~/.profile
 echo "export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true" >> ~/.profile
 
-sudo echo "fs.inotify.max_user_watches=10000000" >> /etc/sysctl.conf
+echo "fs.inotify.max_user_watches=10000000" | sudo tee -a /etc/sysctl.conf
 
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
