@@ -1,4 +1,4 @@
-# Pop!_OS 18.04 Setup for Microservice and Web App Developers
+# Pop!_OS 18.04 Setup for Web App Developers
 
 Instructions to make [Pop!_OS](https://system76.com/pop) setup fast and efficient for developing software in Go, C# (.NET Core), Java, Python, and NodeJS, as well as web front-ends in React. These instructions should also work for Ubuntu and most Ubuntu-based Linux distributions.
 
