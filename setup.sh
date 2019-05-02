@@ -20,7 +20,7 @@ code \
 arc-theme
 
 curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-sudo apt install nodejs
+sudo apt install -y nodejs
 sudo npm install -g npm
 
 wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
