@@ -102,6 +102,8 @@ The following VS Code extensions are handy:
 1. [JavaScript Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
 1. [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 1. [Go](https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go)
+1. [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+1. [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
 There are some excellent dark theme alternatives to the VS Code default theme:
 
