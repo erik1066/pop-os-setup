@@ -1,6 +1,6 @@
-# Pop!_OS 18.04 Setup for Web App Developers
+# Pop!\_OS 18.04 Setup for Web App Developers
 
-Instructions to make [Pop!_OS](https://system76.com/pop) setup fast and efficient for developing software in Go, C# (.NET Core), Java, Python, and NodeJS, as well as web front-ends in React. These instructions should also work for Ubuntu and most Ubuntu-based Linux distributions.
+Instructions to make [Pop!\_OS](https://system76.com/pop) setup fast and efficient for developing software in Go, C# (.NET Core), Java, Python, and NodeJS, as well as web front-ends in React. These instructions should also work for Ubuntu and most Ubuntu-based Linux distributions.
 
 ## Update the OS and install common tools
 
@@ -29,7 +29,7 @@ gnome-tweak-tool
 
 ## Enable Dark Mode and Improve Font Rendering
 
-I'm not a fan of the default font rendering in Pop!_OS. I also happen to enjoy using the OS's dark mode. However, Gnome's OS settings app doesn't include options for themes and fonts. For that you must install the Gnome Tweak Tool. You can install it from the Pop!_Shop or from a terminal as shown below:
+I'm not a fan of the default font rendering in Pop!\_OS. I also happen to enjoy using the OS's dark mode. However, Gnome's OS settings app doesn't include options for themes and fonts. For that you must install the Gnome Tweak Tool. You can install it from the Pop!\_Shop or from a terminal as shown below:
 
 1. Run `sudo apt install gnome-tweak-tool`
 1. Run `gnome-tweaks`
@@ -39,7 +39,7 @@ I'm not a fan of the default font rendering in Pop!_OS. I also happen to enjoy u
 
 You can also install the "Arc" theme for Gnome if you prefer a Dark Mode alternative:
 
-```sudo apt install arc-theme```
+`sudo apt install arc-theme`
 
 ## Increase the inotify watch count
 
@@ -81,18 +81,19 @@ Categories=Development;IDE;Java;
 
 ## Visual Studio Code:
 
-1. From the desktop, select **Activities** (top-left corner of your monitor) > **Pop!_Shop**
+1. From the desktop, select **Activities** (top-left corner of your monitor) > **Pop!\_Shop**
 1. Search for "Visual Studio Code" and install it
 1. Launch Visual Studio Code
 1. Disable Microsoft's telemetry by navigating to **File** > **Preferences** > **Settings** and typing "telemetry", then de-selecting "Enable Crash Reporter" and de-selecting "Enable Telemetry"
 1. Optional: While still in **Settings**, change the **Titlebar** setting to "Custom" if not done so already
 1. Optional: While still in **Settings**, change the following to "False":
-    1. **Enable Natural Language Search**
-    1. **Enable Experiments**
-    1. **Enable Windows Background Updates**
+   1. **Enable Natural Language Search**
+   1. **Enable Experiments**
+   1. **Enable Windows Background Updates**
 1. Optional: While Visual Studio Code is open, select **Activities**, right-click the Visual Studio Code icon on the dock, and select **Add to favorites**.
 
 The following VS Code extensions are handy:
+
 1. [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) - syntax highlighting, debugging, test runner support, and intellisense for C#
 1. [C# XML documentation](https://marketplace.visualstudio.com/items?itemName=k--kato.docomment) - auto-generates C# XML documentation
 1. [Java Extension Pack](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) - syntax highlighting, debugging, and intellisense for Java, plus unit testing support
@@ -139,7 +140,7 @@ Categories=Development
 
 ### Alternative: Use Snap
 
-Ubuntu Snap can also be used to install Postman on Pop!_OS 18.04. However, Postman won't respect your theme selection when installed via Snap.
+Ubuntu Snap can also be used to install Postman on Pop!\_OS 18.04. However, Postman won't respect your theme selection when installed via Snap.
 
 ```bash
 sudo apt install snapd
@@ -164,7 +165,7 @@ sudo apt install golang-go
 
 Run `go version` and look for `go version go1.10.4 linux/amd64` (or newer) to verify success
 
-## Python 
+## Python
 
 ```bash
 sudo apt install python3-minimal
@@ -201,7 +202,7 @@ sudo apt update && sudo apt install dotnet-sdk-2.2 -y
 rm -f packages-microsoft-prod.deb
 ```
 
-Run `dotnet --version` and look for `2.2.203` (or newer) to verify success
+Run `dotnet --version` and look for `2.2.204` (or newer) to verify success
 
 ### Optional: Disable .NET Core telemetry
 
@@ -273,7 +274,7 @@ git config --global user.name "Your Name"
 git config --global user.email yourname@yourdomain.com
 ```
 
-See [Customizing Git Configuration](https://www.git-scm.com/book/en/v2/Customizing-Git-Git-Configuration) for more details. You can edit the global Git config file by running `gedit ~/.gitconfig` in a terminal window. 
+See [Customizing Git Configuration](https://www.git-scm.com/book/en/v2/Customizing-Git-Git-Configuration) for more details. You can edit the global Git config file by running `gedit ~/.gitconfig` in a terminal window.
 
 ## SSH Keys for GitHub/GitLab
 
@@ -286,7 +287,7 @@ See [Customizing Git Configuration](https://www.git-scm.com/book/en/v2/Customizi
 
 ## GPG Keys for signing commits
 
-Taken from https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/index.html. 
+Taken from https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/index.html.
 
 1. Run `gpg --full-gen-key`
 1. Choose "RSA and RSA (default)"
@@ -294,7 +295,7 @@ Taken from https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits
 1. Choose 2y (or a timeframe of your choosing)
 1. Provide the other required inputs
 1. Run `gpg --list-secret-keys --keyid-format LONG mr@robot.sh` (replace `mr@robot.sh` with the email you used previously)
-1. Copy the GPG key ID that starts with `sec`. E.g. in `sec   rsa4096/30F2B65B9246B6CA 2017-08-18 [SC]`, the key ID is `30F2B65B9246B6CA`
+1. Copy the GPG key ID that starts with `sec`. E.g. in `sec rsa4096/30F2B65B9246B6CA 2017-08-18 [SC]`, the key ID is `30F2B65B9246B6CA`
 1. Run `gpg --armor --export 30F2B65B9246B6CA`
 1. Run `git config --global user.signingkey 30F2B65B9246B6CA`
 1. [Add the key to your GitHub account](https://help.github.com/articles/adding-a-new-gpg-key-to-your-github-account/)
@@ -305,7 +306,7 @@ To sign commits, the only difference is the addition of the `-S` flag:
 git commit -S -m "My commit msg"
 ```
 
-## Other Items in Pop!_Store to consider installing:
+## Other Items in Pop!\_Store to consider installing:
 
 1. Dropbox
 1. Slack
@@ -317,7 +318,7 @@ git commit -S -m "My commit msg"
 
 ## VirtualBox
 
-1. From the desktop, select **Activities** (top-left corner of your monitor) > **Pop!_Shop**
+1. From the desktop, select **Activities** (top-left corner of your monitor) > **Pop!\_Shop**
 1. Search for "VirtualBox" and install it
 
 To allow USB pass-through to a guest OS in VirtualBox:
@@ -333,7 +334,7 @@ To allow USB pass-through to a guest OS in VirtualBox:
 
 ## Chromium
 
-1. From the desktop, select **Activities** (top-left corner of your monitor) > **Pop!_Shop**
+1. From the desktop, select **Activities** (top-left corner of your monitor) > **Pop!\_Shop**
 1. Search for "Chromium Browser" and install it
 1. Navigate to https://chrome.google.com/webstore/category/extensions and search for "React Developer Tools"
 1. Add the [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) to Chromium
@@ -342,43 +343,43 @@ To allow USB pass-through to a guest OS in VirtualBox:
 
 1. In Chromium, press the "..." button at the top-right corner of the Chromium window to bring up the options menu
 1. **Settings** > **Search Engine** > Set to "Duck Duck Go" (or your preferred engine)
-1. **Settings** > **Advanced** > **Privacy & Security** > 
-    1. **Allow Chromium sign-in** > Disable
-    1. **Use a prediction service to help complete searches and URLs typed in the address bar** > Disable
-    1. **Use a web service to help resolve navigation errors** > Disable
-    1. **Send a "Do Not Track" request with your browsing traffic** > Enable
-    1. **Allow sites to check if you have payment methods saved** > Disable
-    1. **Content Settings** > 
-        1. **Cookies** > **Block third-party cookies** > Enable
-        1. **Location** > Block
-        1. **Microphone** > Block
-        1. **Camera** > Block
-        1. **Flash** > Set to "Block sites from running Flash"
-        1. **Clipboard** > Set to "Do not allow sites to see text and images copied to the clipboard"
-        1. **Payment Handlers** > Set to "Do not allow any site to install payment handlers"
+1. **Settings** > **Advanced** > **Privacy & Security** >
+   1. **Allow Chromium sign-in** > Disable
+   1. **Use a prediction service to help complete searches and URLs typed in the address bar** > Disable
+   1. **Use a web service to help resolve navigation errors** > Disable
+   1. **Send a "Do Not Track" request with your browsing traffic** > Enable
+   1. **Allow sites to check if you have payment methods saved** > Disable
+   1. **Content Settings** >
+      1. **Cookies** > **Block third-party cookies** > Enable
+      1. **Location** > Block
+      1. **Microphone** > Block
+      1. **Camera** > Block
+      1. **Flash** > Set to "Block sites from running Flash"
+      1. **Clipboard** > Set to "Do not allow sites to see text and images copied to the clipboard"
+      1. **Payment Handlers** > Set to "Do not allow any site to install payment handlers"
 
 ### FYI: How to configure VS Code for **Chromium** JavaScript debugging
 
 Visual Studio Code can [launch Google Chrome in JavaScript debug mode](https://code.visualstudio.com/docs/nodejs/reactjs-tutorial#_configure-the-chrome-debugger) so developers can do useful things like set breakpoints and inspect JavaScript variables at runtime. However, [Microsoft's official guidance on how to configure the Chrome Debugger](https://code.visualstudio.com/docs/nodejs/reactjs-tutorial#_configure-the-chrome-debugger) only works with _Chrome_ and not _Chromium_.
 
-Google Chrome is a commercial, closed-source product. It's based on the open source Chromium project. If you'd like to use Chromium for JavaScript debugging instead of Chrome, you can still follow Microsoft's guide. You'll just need to add a `runtimeExecutable` property to the `launch.json` file in your web app's `.vscode` directory. Just make sure it points to where `chromium-browser` is installed. If you installed Chromium from the Pop!_Store then it should be located at `/usr/bin/chromium-browser`. 
+Google Chrome is a commercial, closed-source product. It's based on the open source Chromium project. If you'd like to use Chromium for JavaScript debugging instead of Chrome, you can still follow Microsoft's guide. You'll just need to add a `runtimeExecutable` property to the `launch.json` file in your web app's `.vscode` directory. Just make sure it points to where `chromium-browser` is installed. If you installed Chromium from the Pop!\_Store then it should be located at `/usr/bin/chromium-browser`.
 
-The `launch.json` file will automatically be created if you follow along with [Microsoft's how-to guide](https://code.visualstudio.com/docs/nodejs/reactjs-tutorial#_configure-the-chrome-debugger). 
+The `launch.json` file will automatically be created if you follow along with [Microsoft's how-to guide](https://code.visualstudio.com/docs/nodejs/reactjs-tutorial#_configure-the-chrome-debugger).
 
 The `launch.json` file needed to debug using Chromium is shown below:
 
 ```json
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "chrome",
-            "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:3000",
-            "webRoot": "${workspaceFolder}",
-            "runtimeExecutable": "/usr/bin/chromium-browser"
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome against localhost",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}",
+      "runtimeExecutable": "/usr/bin/chromium-browser"
+    }
+  ]
 }
 ```
