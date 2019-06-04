@@ -202,7 +202,7 @@ sudo apt update && sudo apt install dotnet-sdk-2.2 -y
 rm -f packages-microsoft-prod.deb
 ```
 
-Run `dotnet --version` and look for `2.2.204` (or newer) to verify success
+Run `dotnet --version` and look for `2.2.300` (or newer) to verify success
 
 ### Optional: Disable .NET Core telemetry
 
