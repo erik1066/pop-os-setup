@@ -90,6 +90,7 @@ Categories=Development;IDE;Java;
    1. **Enable Natural Language Search**
    1. **Enable Experiments**
    1. **Enable Windows Background Updates**
+1. Optional: While still in **Settings**, enable **Editor: Format on Save**. Turning this setting on is the same as running the **Format Document** command each time you save a file.
 1. Optional: While Visual Studio Code is open, select **Activities**, right-click the Visual Studio Code icon on the dock, and select **Add to favorites**.
 
 The following VS Code extensions are handy:
