@@ -156,7 +156,7 @@ The command `/snap/bin/postman` will start Postman. To add Postman to `PATH`, ru
 sudo apt install openjdk-8-jdk-headless maven
 ```
 
-Run `javac -version` and look for `javac 1.8.0_191` (or newer) to verify success
+Run `javac -version` and look for `javac 1.8.0_212` (or newer) to verify success
 
 ## Go
 
@@ -184,7 +184,7 @@ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 sudo apt install nodejs
 ```
 
-Run `npm --version` and look for `6.9.0` (or newer) to verify success
+Run `npm --version` and look for `6.10.1` (or newer) to verify success
 
 Periodically, you will want to update NPM to the latest available version. Do so by running:
 
@@ -203,7 +203,7 @@ sudo apt update && sudo apt install dotnet-sdk-2.2 -y
 rm -f packages-microsoft-prod.deb
 ```
 
-Run `dotnet --version` and look for `2.2.300` (or newer) to verify success
+Run `dotnet --version` and look for `2.2.301` (or newer) to verify success
 
 ### Optional: Disable .NET Core telemetry
 
@@ -234,9 +234,9 @@ sudo apt update
 sudo apt install docker-ce
 docker --version
 
-# Running "docker --version" should display "Docker version 18.09.6, build 481bc77" or similar
+# Running "docker --version" should display "Docker version 18.09.8, build 0dd43dd87f" or similar
 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
