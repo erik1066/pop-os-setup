@@ -203,7 +203,7 @@ sudo apt update && sudo apt install dotnet-sdk-2.2 -y
 rm -f packages-microsoft-prod.deb
 ```
 
-Run `dotnet --version` and look for `2.2.301` (or newer) to verify success
+Run `dotnet --version` and look for `2.2.401` (or newer) to verify success
 
 ### Optional: Disable .NET Core telemetry
 
@@ -240,7 +240,7 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
-# Running "docker-compose --version" should display "docker-compose version 1.24.0, build 0aa59064" or similar
+# Running "docker-compose --version" should display "docker-compose version 1.24.1, build 4667896b" or similar
 
 sudo usermod -aG docker $USER
 
