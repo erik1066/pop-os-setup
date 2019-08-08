@@ -16,10 +16,11 @@ apache2-utils \
 make \
 chromium-browser \
 gnome-tweak-tool \
+python3-pip \
 code \
 arc-theme
 
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt install -y nodejs
 sudo npm install -g npm
 

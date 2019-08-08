@@ -24,7 +24,8 @@ software-properties-common \
 apache2-utils \
 make \
 chromium-browser \
-gnome-tweak-tool
+gnome-tweak-tool \
+python3-pip
 ```
 
 ## Enable Dark Mode and Improve Font Rendering
@@ -156,7 +157,7 @@ The command `/snap/bin/postman` will start Postman. To add Postman to `PATH`, ru
 sudo apt install openjdk-8-jdk-headless maven
 ```
 
-Run `javac -version` and look for `javac 1.8.0_212` (or newer) to verify success
+Run `javac -version` and look for `javac 1.8.0_222` (or newer) to verify success
 
 ## Go
 
@@ -172,7 +173,7 @@ Run `go version` and look for `go version go1.10.4 linux/amd64` (or newer) to ve
 sudo apt install python3-minimal
 ```
 
-Run `python3 -V` and look for `Python 3.6.8` (or newer) to verify success
+Run `python3 --version` and look for `Python 3.6.8` (or newer) to verify success
 
 To install Anaconda Python instead, see https://linuxhint.com/install_anaconda_python_ubuntu_1804/.
 
@@ -180,7 +181,7 @@ To install Anaconda Python instead, see https://linuxhint.com/install_anaconda_p
 
 ```bash
 sudo apt install build-essential
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt install nodejs
 ```
 
@@ -267,6 +268,28 @@ sudo apt-key --keyring /etc/apt/trusted.gpg.d/Microsoft.gpg adv \
 sudo apt-get update
 sudo apt-get install azure-cli
 ```
+
+## AWS CLI tools
+
+See [Install AWS CLI on Linux](https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html) for further information.
+
+```bash
+sudo apt install -y python3-pip
+pip3 install awscli --upgrade --user
+PATH="$HOME/.local/bin:$PATH"
+```
+
+Run `aws --version` and `pip3 --version` to verify success. 
+
+> Pop!_OS's default configuration doesn't inclue a `~/.local/bin` folder which is why we add it to `PATH` in the above set of commands - otherwise, the `aws` CLI tools won't be found when we try and use them in the terminal. However, when you log out and log in, you will not have to set the PATH again. The Pop!_OS profile setup script checks for this folder automatically on login and if it exists at that time, it will be adde to `PATH`.
+
+Since the AWS CLI was installed via `pip` and not from `apt`, the `apt update` command will not detect updates for `aws`. Instead, will need to run a different command to update the AWS CLI tools:
+
+```bash
+pip3 install --upgrade --user awscli
+```
+
+> You can alternatively install the `awscli` package using `apt`, but it may be out-of-date compared to using the `pip` method.
 
 ## Git configuration
 
