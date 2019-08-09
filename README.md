@@ -198,7 +198,7 @@ sudo npm install -g npm
 ```bash
 sudo apt install apt-transport-https ca-certificates
 cd ~/Downloads
-wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
+wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 sudo apt update && sudo apt install dotnet-sdk-2.2 -y
 rm -f packages-microsoft-prod.deb
