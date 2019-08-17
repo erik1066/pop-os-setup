@@ -223,6 +223,18 @@ rm -f packages-microsoft-prod.deb
 
 Run `dotnet --version` and look for `2.2.401` (or newer) to verify success
 
+### Optional: Installing .NET Core preview releases
+
+Preview releases of .NET Core are unavailable from `packages.microsoft.com` and must be installed manually. The script below assumes you've downloaded a preview release with a filename of `dotnet-sdk-3.0.100-preview8-013656-linux-x64.tar.gz`.
+
+```
+mkdir -p $HOME/dotnet && tar zxf dotnet-sdk-3.0.100-preview8-013656-linux-x64.tar.gz -C $HOME/dotnet
+export DOTNET_ROOT=$HOME/dotnet
+export PATH=$PATH:$HOME/dotnet
+```
+
+> If you've installed a stable .NET Core release from `packages.microsoft.com`, then you will need to use a different command to update PATH. Otherwise only the stable version of .NET Core will be found at the command line. To make sure the preview release is used when running `dotnet`, instead execute `export PATH=$HOME/dotnet:$PATH`.
+
 ### Optional: Disable .NET Core telemetry
 
 1. Run `gedit ~/.profile`
