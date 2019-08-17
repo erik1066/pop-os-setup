@@ -72,7 +72,7 @@ Keywords=Java,Eclipse,Spring,IDE,Development
 Categories=Development;IDE;Java;
 ```
 
-7. Press `CTRL`+`X` to exit Nano and save when prompted
+7. Press <kbd>CTRL</kbd>+<kbd>X</kbd> to exit Nano and save when prompted
 1. Navigate to **Activities** on the main PopOS desktop and select **Show Applications**
 1. Right-click on **Spring Tool Suite** and select **Add to favorites**
 1. Open Spring Tool Suite
@@ -193,6 +193,22 @@ Periodically, you will want to update NPM to the latest available version. Do so
 sudo npm install -g npm
 ```
 
+### Removing NodeJS
+
+The way in which NodeJS is installed means a few extra steps are needed to remove it:
+
+```bash
+sudo apt-get remove nodejs
+sudo apt-get remove npm
+sudo rm /etc/apt/sources.list.d/nodesource.list
+sudo apt-get update
+which node
+which nodejs
+which npm
+```
+
+The three `which` commands should all display nothing, indicating Node's successful removal.
+
 ## .NET Core
 
 ```bash
@@ -279,9 +295,9 @@ pip3 install awscli --upgrade --user
 PATH="$HOME/.local/bin:$PATH"
 ```
 
-Run `aws --version` and `pip3 --version` to verify success. 
+Run `aws --version` and `pip3 --version` to verify success.
 
-> Pop!_OS's default configuration doesn't inclue a `~/.local/bin` folder which is why we add it to `PATH` in the above set of commands - otherwise, the `aws` CLI tools won't be found when we try and use them in the terminal. However, when you log out and log in, you will not have to set the PATH again. The Pop!_OS profile setup script checks for this folder automatically on login and if it exists at that time, it will be adde to `PATH`.
+> Pop!\_OS's default configuration doesn't inclue a `~/.local/bin` folder which is why we add it to `PATH` in the above set of commands - otherwise, the `aws` CLI tools won't be found when we try and use them in the terminal. However, when you log out and log in, you will not have to set the PATH again. The Pop!\_OS profile setup script checks for this folder automatically on login and if it exists at that time, it will be adde to `PATH`.
 
 Since the AWS CLI was installed via `pip` and not from `apt`, the `apt update` command will not detect updates for `aws`. Instead, will need to run a different command to update the AWS CLI tools:
 
