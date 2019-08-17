@@ -25,7 +25,8 @@ apache2-utils \
 make \
 chromium-browser \
 gnome-tweak-tool \
-python3-pip
+python3-pip \
+libgconf-2-4
 ```
 
 ## Enable Dark Mode and Improve Font Rendering
@@ -118,26 +119,26 @@ There are some excellent dark theme alternatives to the VS Code default theme:
 
 ## Postman
 
-1. Visit https://www.getpostman.com/downloads/
-1. Download the 64-bit Linux package to the "Downloads" folder
-1. Extract the contents of the package to a `Postman` directory underneath `Downloads`
-1. Run `sudo nano /usr/share/applications/Postman.desktop`
-1. Type the following, replacing `Exec=` with the actual location of Postman:
+```bash
+sudo apt install libgconf-2-4
+cd ~/Downloads
+wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
+sudo tar -xzf postman.tar.gz -C /opt
+sudo ln -s /opt/Postman/Postman /usr/bin/postman
 
-```ini
+cat > ~/.local/share/applications/postman.desktop <<EOL
 [Desktop Entry]
+Encoding=UTF-8
 Name=Postman
-Comment=Postman
-Exec=/home/yourusername/Downloads/Postman/Postman
-StartupNotify=true
+Exec=postman
+Icon=/opt/Postman/app/resources/app/assets/icon.png
 Terminal=false
 Type=Application
-Keywords=Development
-Categories=Development
+Categories=Development;
+EOL
 ```
 
-6. Press `CTRL`+`X` to exit Nano and save when prompted
-1. Navigate to **Activities** on the main PopOS desktop and select **Show Applications**
+1. Navigate to **Activities** on the main Pop_OS! desktop and select **Show Applications**
 1. Right-click on **Postman** and select **Add to favorites**
 
 ### Alternative: Use Snap

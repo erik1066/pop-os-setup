@@ -1,6 +1,14 @@
 #!/bin/bash
 
+# ------------------------------------
+# Install updates:
+# ------------------------------------
 sudo apt update && sudo apt dist-upgrade -y
+
+
+# ------------------------------------
+# Install dev tools and some themes:
+# ------------------------------------
 
 sudo apt install -y \
 openjdk-8-jdk-headless \
@@ -17,13 +25,24 @@ make \
 chromium-browser \
 gnome-tweak-tool \
 python3-pip \
+libgconf-2-4 \
 code \
 arc-theme
+
+
+# ------------------------------------
+# Install NodeJS:
+# ------------------------------------
 
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt install -y nodejs
 sudo npm install -g npm
+echo "fs.inotify.max_user_watches=10000000" | sudo tee -a /etc/sysctl.conf
 
+
+# ------------------------------------
+# Install .NET Core and turn off .NET Core telemetry:
+# ------------------------------------
 wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 sudo apt update && sudo apt install dotnet-sdk-2.2 -y
@@ -33,8 +52,10 @@ dotnet --version
 echo "export DOTNET_CLI_TELEMETRY_OPTOUT=true" >> ~/.profile
 echo "export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true" >> ~/.profile
 
-echo "fs.inotify.max_user_watches=10000000" | sudo tee -a /etc/sysctl.conf
 
+# ------------------------------------
+# Install Docker and Docker Compose:
+# ------------------------------------
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo apt-key fingerprint 0EBFCD88
@@ -56,3 +77,24 @@ sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
 sudo usermod -aG docker $USER
+
+
+# ------------------------------------
+# Install Postman:
+# ------------------------------------
+sudo apt install libgconf-2-4
+cd ~/Downloads
+wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
+sudo tar -xzf postman.tar.gz -C /opt
+sudo ln -s /opt/Postman/Postman /usr/bin/postman
+
+cat > ~/.local/share/applications/postman.desktop <<EOL
+[Desktop Entry]
+Encoding=UTF-8
+Name=Postman
+Exec=postman
+Icon=/opt/Postman/app/resources/app/assets/icon.png
+Terminal=false
+Type=Application
+Categories=Development;
+EOL
