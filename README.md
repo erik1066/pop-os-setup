@@ -1,6 +1,6 @@
 # Pop!\_OS 18.04 Setup for Web App Developers
 
-Instructions to make [Pop!\_OS](https://system76.com/pop) setup fast and efficient for developing software in Go, C# (.NET Core), Java, Python, and NodeJS, as well as web front-ends in React. These instructions should also work for Ubuntu and most Ubuntu-based Linux distributions.
+This repository contains instructions to set up [Pop!\_OS](https://system76.com/pop) for developing software in Go, C# (.NET Core), Java, Python, and NodeJS, as well as web front-ends in React. The steps below should also work for Ubuntu and most Ubuntu-based Linux distributions.
 
 ## Update the OS and install common tools
 
@@ -10,7 +10,7 @@ The first thing you should do is get the latest security updates:
 sudo apt update && sudo apt dist-upgrade -y
 ```
 
-Next, install some common tools you'll need later:
+Next, install common development tools:
 
 ```bash
 sudo apt install \
@@ -31,7 +31,7 @@ libgconf-2-4
 
 ## Enable Dark Mode and Improve Font Rendering
 
-I'm not a fan of the default font rendering in Pop!\_OS. I also happen to enjoy using the OS's dark mode. However, Gnome's OS settings app doesn't include options for themes and fonts. For that you must install the Gnome Tweak Tool. You can install it from the Pop!\_Shop or from a terminal as shown below:
+The default font rendering in Pop!\_OS may appear blurry on most LCD monitors. I also happen to enjoy using the OS's dark mode. However, Gnome's OS settings application lacks the ability to set dark mode and to change font rendering. You must install the Gnome Tweak Tool to adjust these settings. Gnome Tweak Tool can be installed from the Pop!\_Shop or from a terminal as shown below:
 
 1. Run `sudo apt install gnome-tweak-tool`
 1. Run `gnome-tweaks`
@@ -45,7 +45,7 @@ You can also install the "Arc" theme for Gnome if you prefer a Dark Mode alterna
 
 ## Increase the inotify watch count
 
-When working with Dropbox, React, and NodeJS, you may run into this error: "User limit of inotify watches reached". The default limit for file watchers is 8,192. Increase this limit to something more reasonable:
+When working with Dropbox, React, and NodeJS, you may run into the following error: "User limit of inotify watches reached". The default limit for file watchers is 8,192. Increase this limit to something more reasonable:
 
 1. Run `sudo gedit /etc/sysctl.conf`
 1. Add `fs.inotify.max_user_watches=10000000` to the bottom of the file
@@ -143,7 +143,7 @@ EOL
 
 ### Alternative: Use Snap
 
-Ubuntu Snap can also be used to install Postman on Pop!\_OS 18.04. However, Postman won't respect your theme selection when installed via Snap.
+Ubuntu Snap can also be used to install Postman on Pop!\_OS 18.04. However, Postman won't respect your theme selection when installed via Snap and may experience other issues.
 
 ```bash
 sudo apt install snapd
