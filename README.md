@@ -1,6 +1,8 @@
-# Pop!\_OS 18.04 Setup for Web App Developers
+# Pop!\_OS 18.04 Setup for Web Developers
 
 This repository contains instructions to set up [Pop!\_OS](https://system76.com/pop) for developing software in Go, C# (.NET Core), Java, Python, and NodeJS, as well as web front-ends in React. The steps below should also work for Ubuntu and most Ubuntu-based Linux distributions.
+
+![Pop!_OS desktop screenshot with various developer tools displayed and the Arc Dark theme](images/screenshot01.png "Pop!_OS desktop screenshot with various developer tools displayed and the Arc Dark theme")
 
 ## Update the OS and install common tools
 
