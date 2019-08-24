@@ -188,7 +188,7 @@ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt install nodejs
 ```
 
-Run `npm --version` and look for `6.11.1` (or newer) to verify success
+Run `npm --version` and look for `6.11.2` (or newer) to verify success
 
 Periodically, you will want to update NPM to the latest available version. Do so by running:
 
