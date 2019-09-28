@@ -45,7 +45,7 @@ echo "fs.inotify.max_user_watches=10000000" | sudo tee -a /etc/sysctl.conf
 # ------------------------------------
 wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
-sudo apt update && sudo apt install dotnet-sdk-2.2 -y
+sudo apt update && sudo apt install dotnet-sdk-3.0 -y
 rm -f packages-microsoft-prod.deb
 dotnet --version
 
