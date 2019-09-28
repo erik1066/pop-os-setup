@@ -223,7 +223,7 @@ sudo apt update && sudo apt install dotnet-sdk-3.0 -y
 rm -f packages-microsoft-prod.deb
 ```
 
-Run `dotnet --version` and look for `2.2.401` (or newer) to verify success
+Run `dotnet --version` and look for `3.0.100` (or newer) to verify success
 
 ### Optional: Installing .NET Core preview releases
 
