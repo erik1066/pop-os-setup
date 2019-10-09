@@ -266,7 +266,7 @@ sudo apt update
 sudo apt install docker-ce
 docker --version
 
-# Running "docker --version" should display "Docker version 19.03.1, build 74b1e89" or similar
+# Running "docker --version" should display "Docker version 19.03.3, build a872fc2f86" or similar
 
 sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
