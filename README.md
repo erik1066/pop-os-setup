@@ -188,7 +188,7 @@ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt install nodejs
 ```
 
-Run `npm --version` and look for `6.11.2` (or newer) to verify success
+Run `npm --version` and look for `6.12.1` (or newer) to verify success
 
 Periodically, you will want to update NPM to the latest available version. Do so by running:
 
@@ -223,7 +223,7 @@ sudo apt update && sudo apt install dotnet-sdk-3.0 -y
 rm -f packages-microsoft-prod.deb
 ```
 
-Run `dotnet --version` and look for `3.0.100` (or newer) to verify success
+Run `dotnet --version` and look for `3.0.101` (or newer) to verify success
 
 ### Optional: Installing .NET Core preview releases
 
@@ -241,11 +241,10 @@ export PATH=$PATH:$HOME/dotnet
 
 1. Run `gedit ~/.profile`
 1. Type `export DOTNET_CLI_TELEMETRY_OPTOUT=true` at the bottom of the file
-1. Type `export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true` at the bottom of the file
 1. Save and exit
 1. Log out and log in again
 
-> Setting `DOTNET_SKIP_FIRST_TIME_EXPERIENCE` to `true` doesn't affect telemtry. It's a fix for the following warning that may appear during .NET Core compilation: "Permission denied to modify the '/usr/share/dotnet/sdk/NuGetFallbackFolder' folder."
+> You can also set `DOTNET_SKIP_FIRST_TIME_EXPERIENCE` to `true` when editing `.profile` to fix the following warning that may appear during .NET Core compiles: "Permission denied to modify the '/usr/share/dotnet/sdk/NuGetFallbackFolder' folder."
 
 ## Docker and Docker Compose
 
@@ -266,13 +265,13 @@ sudo apt update
 sudo apt install docker-ce
 docker --version
 
-# Running "docker --version" should display "Docker version 19.03.3, build a872fc2f86" or similar
+# Running "docker --version" should display "Docker version 19.03.5, build 633a0ea838" or newer
 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
-# Running "docker-compose --version" should display "docker-compose version 1.24.1, build 4667896b" or similar
+# Running "docker-compose --version" should display "docker-compose version 1.25.0, build 0a186604"
 
 sudo usermod -aG docker $USER
 
