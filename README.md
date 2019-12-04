@@ -219,11 +219,20 @@ sudo apt install apt-transport-https ca-certificates
 cd ~/Downloads
 wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
-sudo apt update && sudo apt install dotnet-sdk-3.0 -y
+sudo apt update && sudo apt install dotnet-sdk-3.1 -y
 rm -f packages-microsoft-prod.deb
 ```
 
-Run `dotnet --version` and look for `3.0.101` (or newer) to verify success
+Run `dotnet --version` and look for `3.1.100` (or newer) to verify success
+
+### Optional: Disable .NET Core telemetry
+
+1. Run `gedit ~/.profile`
+1. Type `export DOTNET_CLI_TELEMETRY_OPTOUT=true` at the bottom of the file
+1. Save and exit
+1. Log out and log in again
+
+> You can also set `DOTNET_SKIP_FIRST_TIME_EXPERIENCE` to `true` when editing `.profile` to fix the following warning that may appear during .NET Core compiles: "Permission denied to modify the '/usr/share/dotnet/sdk/NuGetFallbackFolder' folder."
 
 ### Optional: Installing .NET Core preview releases
 
@@ -236,15 +245,6 @@ export PATH=$PATH:$HOME/dotnet
 ```
 
 > If you've installed a stable .NET Core release from `packages.microsoft.com`, then you will need to use a different command to update PATH. Otherwise only the stable version of .NET Core will be found at the command line. To make sure the preview release is used when running `dotnet`, instead execute `export PATH=$HOME/dotnet:$PATH`.
-
-### Optional: Disable .NET Core telemetry
-
-1. Run `gedit ~/.profile`
-1. Type `export DOTNET_CLI_TELEMETRY_OPTOUT=true` at the bottom of the file
-1. Save and exit
-1. Log out and log in again
-
-> You can also set `DOTNET_SKIP_FIRST_TIME_EXPERIENCE` to `true` when editing `.profile` to fix the following warning that may appear during .NET Core compiles: "Permission denied to modify the '/usr/share/dotnet/sdk/NuGetFallbackFolder' folder."
 
 ## Docker and Docker Compose
 
