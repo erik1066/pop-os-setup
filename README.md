@@ -111,6 +111,7 @@ The following VS Code extensions are handy:
 1. [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 1. [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin)
 1. [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+1. [AWS Toolkit](https://marketplace.visualstudio.com/items?itemName=AmazonWebServices.aws-toolkit-vscode)
 
 There are some excellent dark theme alternatives to the VS Code default theme:
 
@@ -336,8 +337,8 @@ See [Customizing Git Configuration](https://www.git-scm.com/book/en/v2/Customizi
 1. Enter a passphrase
 1. Run `cat ~/.ssh/id_rsa.pub`
 1. Copy the output from `cat` and paste it into GitLab and GitHub's SSH key sections for your profile
+1. Run `ssh -T git@github.com` to [verify the key is recognized and working with GitHub.com](https://help.github.com/en/github/authenticating-to-github/githubs-ssh-key-fingerprints)
 1. Run `ssh -T git@gitlab.com` to verify the key is recognized and working with GitLab
-1. Run `ssh -T git@github.com` to verify the key is recognized and working with GitHub.com
 
 ## GPG Keys for signing commits
 
