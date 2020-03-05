@@ -103,7 +103,6 @@ The following VS Code extensions are handy:
 1. [C# XML documentation](https://marketplace.visualstudio.com/items?itemName=k--kato.docomment) - auto-generates C# XML documentation
 1. [Rust (rls)](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust) - Rust language server
 1. [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb) - for debugging Rust code on Ubuntu
-1. [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) - for debugging Rust code on Windows
 1. [Java Extension Pack](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) - syntax highlighting, debugging, and intellisense for Java, plus unit testing support
 1. [Spring Boot Extension Pack](https://marketplace.visualstudio.com/items?itemName=Pivotal.vscode-boot-dev-pack) - specific enhancements for working with Spring Boot
 1. [VS Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) - allows simultaneous editing of code files by multiple authors, like Google Docs
@@ -181,6 +180,8 @@ curl https://sh.rustup.rs -sSf | sh
 ```
 
 Restart your terminal session, run `rustc --version`, and look for `rustc 1.41.1 (f3e1a954d 2020-02-24)` (or newer) to verify success.
+
+> Alternatively, you may run `sudo apt install cargo`.
 
 ## Python
 
