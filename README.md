@@ -1,6 +1,6 @@
 # Pop!\_OS 18.04 Setup for Web Developers
 
-This repository contains instructions to set up [Pop!\_OS](https://system76.com/pop) for developing software in Go, C# (.NET Core), Java, Python, and NodeJS, as well as web front-ends in React. The steps below should also work for Ubuntu and most Ubuntu-based Linux distributions.
+This repository contains instructions to set up [Pop!\_OS](https://system76.com/pop) for developing software in Go, Rust, C# (.NET Core), Java, Python, and NodeJS, as well as web front-ends in React. The steps below should also work for Ubuntu and most Ubuntu-based Linux distributions.
 
 ![Pop!_OS desktop screenshot with various developer tools displayed and the Arc Dark theme](images/screenshot01.png "Pop!_OS desktop screenshot with various developer tools displayed and the Arc Dark theme")
 
@@ -101,6 +101,9 @@ The following VS Code extensions are handy:
 
 1. [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) - syntax highlighting, debugging, test runner support, and intellisense for C#
 1. [C# XML documentation](https://marketplace.visualstudio.com/items?itemName=k--kato.docomment) - auto-generates C# XML documentation
+1. [Rust (rls)](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust) - Rust language server
+1. [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb) - for debugging Rust code on Ubuntu
+1. [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) - for debugging Rust code on Windows
 1. [Java Extension Pack](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) - syntax highlighting, debugging, and intellisense for Java, plus unit testing support
 1. [Spring Boot Extension Pack](https://marketplace.visualstudio.com/items?itemName=Pivotal.vscode-boot-dev-pack) - specific enhancements for working with Spring Boot
 1. [VS Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) - allows simultaneous editing of code files by multiple authors, like Google Docs
@@ -171,13 +174,21 @@ sudo apt install golang-go
 
 Run `go version` and look for `go version go1.10.4 linux/amd64` (or newer) to verify success
 
+## Rust
+
+```bash
+curl https://sh.rustup.rs -sSf | sh
+```
+
+Restart your terminal session, run `rustc --version`, and look for `rustc 1.41.1 (f3e1a954d 2020-02-24)` (or newer) to verify success.
+
 ## Python
 
 ```bash
 sudo apt install python3-minimal
 ```
 
-Run `python3 --version` and look for `Python 3.6.8` (or newer) to verify success
+Run `python3 --version` and look for `Python 3.6.9` (or newer) to verify success
 
 To install Anaconda Python instead, see https://linuxhint.com/install_anaconda_python_ubuntu_1804/.
 
@@ -189,7 +200,7 @@ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt install nodejs
 ```
 
-Run `npm --version` and look for `6.12.1` (or newer) to verify success
+Run `npm --version` and look for `6.13.7` (or newer) to verify success
 
 Periodically, you will want to update NPM to the latest available version. Do so by running:
 
@@ -224,7 +235,7 @@ sudo apt update && sudo apt install dotnet-sdk-3.1 -y
 rm -f packages-microsoft-prod.deb
 ```
 
-Run `dotnet --version` and look for `3.1.100` (or newer) to verify success
+Run `dotnet --version` and look for `3.1.102` (or newer) to verify success
 
 ### Optional: Disable .NET Core telemetry
 
@@ -266,13 +277,13 @@ sudo apt update
 sudo apt install docker-ce
 docker --version
 
-# Running "docker --version" should display "Docker version 19.03.5, build 633a0ea838" or newer
+# Running "docker --version" should display "Docker version 19.03.6, build 369ce74a3c" or newer
 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
-# Running "docker-compose --version" should display "docker-compose version 1.25.0, build 0a186604"
+# Running "docker-compose --version" should display "docker-compose version 1.25.4, build 8d51620a"
 
 sudo usermod -aG docker $USER
 
