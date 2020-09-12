@@ -1,4 +1,4 @@
-# Pop!\_OS 18.04 Setup for Web Developers
+# Pop!\_OS 20.04 Setup for Web Developers
 
 This repository contains instructions to set up [Pop!\_OS](https://system76.com/pop) for developing software in Go, Rust, C# (.NET Core), Java, Python, and NodeJS, as well as web front-ends in React. The steps below should also work for Ubuntu and most Ubuntu-based Linux distributions.
 
@@ -29,22 +29,18 @@ chromium-browser \
 gnome-tweak-tool \
 gnome-shell-extensions \
 python3-pip \
+dconf-editor \
 libgconf-2-4
 ```
 
-## Enable Dark Mode and Improve Font Rendering
+## Improve Font Rendering
 
-The default font rendering in Pop!\_OS may appear blurry on most LCD monitors. I also happen to enjoy using the OS's dark mode. However, Gnome's OS settings application lacks the ability to set dark mode and to change font rendering. You must install the Gnome Tweak Tool to adjust these settings. Gnome Tweak Tool can be installed from the Pop!\_Shop or from a terminal as shown below:
+The default font rendering in Pop!\_OS may appear blurry on LCD monitors. Gnome's OS settings application lacks the ability to change font rendering. You must install the Gnome Tweak Tool to adjust these settings. Gnome Tweak Tool can be installed from the Pop!\_Shop or from a terminal as shown below:
 
 1. Run `sudo apt install gnome-tweak-tool`
 1. Run `gnome-tweaks`
-1. **Appearance** > **Themes** > **Applications** : Set to "Pop-dark" or "Adwaita-dark"
 1. **Fonts** > **Hinting** > Set to "Full"
 1. **Fonts** > **Antialiasing** > Set to "Subpixel (for LCD screens)"
-
-You can also install the "Arc" theme for Gnome if you prefer a Dark Mode alternative:
-
-`sudo apt install arc-theme`
 
 ## Increase the inotify watch count
 
@@ -194,6 +190,21 @@ There are some excellent dark theme alternatives to the VS Code default theme:
 
 ## Postman
 
+Postman can be installed in one of three ways. The easiest is to open the **Pop!_Shop** and install Postman using the GUI. 
+
+> Installing Postman from **Pop!_Shop** installs from Flathub. 
+
+### Alternative: Install Postman from flathub using the terminal
+
+You may alternatively install Postman from Flathub using a terminal session. However, in Pop!_OS 20.04, you must first add the Flathub remote repository. Both commands are shown below:
+
+```bash
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub com.getpostman.Postman
+```
+
+### Alternative: Install Postman from .tar.gz using the terminal
+
 ```bash
 sudo apt install libgconf-2-4
 cd ~/Downloads
@@ -213,8 +224,10 @@ Categories=Development;
 EOL
 ```
 
+Be sure to pin Postman by adding it to your favorites:
+
 1. Navigate to **Activities** on the main Pop_OS! desktop and select **Show Applications**
-1. Right-click on **Postman** and select **Add to favorites**
+1. Right-click on **Postman** and select **Add to favorites** 
 
 ## Java and Maven
 
@@ -339,11 +352,11 @@ docker --version
 
 # Running "docker --version" should display "Docker version 19.03.6, build 369ce74a3c" or newer
 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
-# Running "docker-compose --version" should display "docker-compose version 1.25.4, build 8d51620a"
+# Running "docker-compose --version" should display "docker-compose version 1.27.2, build 8d51620a"
 
 sudo usermod -aG docker $USER
 
