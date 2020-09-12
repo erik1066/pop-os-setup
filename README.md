@@ -207,17 +207,6 @@ EOL
 1. Navigate to **Activities** on the main Pop_OS! desktop and select **Show Applications**
 1. Right-click on **Postman** and select **Add to favorites**
 
-### Alternative: Use Snap
-
-Ubuntu Snap can also be used to install Postman on Pop!\_OS 18.04. However, Postman won't respect your theme selection when installed via Snap and may experience other issues.
-
-```bash
-sudo apt install snapd
-snap install postman
-```
-
-The command `/snap/bin/postman` will start Postman. To add Postman to `PATH`, run `nano ~/.profile`, add `export PATH=$PATH:/snap/bin` at the bottom of the file, save, and log out and in again. You can then run `postman` from the command prompt.
-
 ## Java and Maven
 
 ```bash
