@@ -53,6 +53,67 @@ When working with Dropbox, React, and NodeJS, you may run into the following err
 1. Add `fs.inotify.max_user_watches=10000000` to the bottom of the file
 1. Run `sudo sysctl -p` (or restart the OS)
 
+## Z Shell (ZSH)
+
+ZSH can be installed by running:
+
+```bash
+sudo apt install zsh
+```
+
+Run `zsh --version` and look for `zsh 5.8 (x86_64-ubuntu-linux-gnu)` (or newer) to verify success
+
+### Optional: Install Oh-My-ZSH for ZSH configuration management
+[Oh-My-ZSH](https://github.com/ohmyzsh/ohmyzsh) is an excellent tool for managing your ZSH configuration. Install it using the following command:
+
+```bash
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/
+install.sh -O -)"
+```
+
+An "Oh My Zsh!... is now installed" message should appear in the termal output. You may be prompted to set ZSH as your default shell.
+
+### Optional: Enable ZSH syntax highlighting
+Install syntax highlighting for ZSH by running:
+
+```bash
+sudo apt install zsh-syntax-highlighting
+```
+
+Now run:
+
+```bash
+echo "source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+```
+
+The changes will be applied to new terminal windows.
+
+### Optional: Change ZSH theme using Oh-My-ZSH
+
+Oh-My-ZSH is installed with [several themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes). Let's change the default theme to `blinks` by first opening the `.zshrc` file:
+
+```bash
+sudo gedit ~/.zshrc
+```
+
+Find the line `ZSH_THEME="robbyrussell"` and change it to `ZSH_THEME="blinks"` and save. The new theme will be applied to new terminal windows.
+
+### Optional: Enable ZSH plugins
+
+Plugins add functionality to ZSH. Let's enable some [pre-installed plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins) for a few programming languages. First, open the `.zshrc` file:
+
+```bash
+sudo gedit ~/.zshrc
+```
+
+Find the line `plugins=(git)` and change it to include your preferred plugins. An example:
+
+```
+plugins=(git dotnet rust rustup golang mvn npm terraform aws gradle)
+```
+
+Save the file. The plugins will be applied to new terminal windows.
+
 ## Spring Tool Suite (STS) 4:
 
 1. Visit https://spring.io/tools
@@ -201,7 +262,7 @@ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt install nodejs
 ```
 
-Run `npm --version` and look for `6.13.7` (or newer) to verify success
+Run `npm --version` and look for `6.14.2` (or newer) to verify success
 
 Periodically, you will want to update NPM to the latest available version. Do so by running:
 
@@ -450,3 +511,4 @@ The `launch.json` file needed to debug using Chromium is shown below:
   ]
 }
 ```
+
