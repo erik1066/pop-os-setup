@@ -27,6 +27,7 @@ apache2-utils \
 make \
 chromium-browser \
 gnome-tweak-tool \
+gnome-shell-extensions \
 python3-pip \
 libgconf-2-4
 ```
@@ -53,9 +54,17 @@ When working with Dropbox, React, and NodeJS, you may run into the following err
 1. Add `fs.inotify.max_user_watches=10000000` to the bottom of the file
 1. Run `sudo sysctl -p` (or restart the OS)
 
+## Tilix
+
+Tilix may be preferable to the default Gnome terminal:
+
+```bash
+sudo apt install tilix
+```
+
 ## Z Shell (ZSH)
 
-ZSH can be installed by running:
+[ZSH](https://en.wikipedia.org/wiki/Z_shell) can be installed by running:
 
 ```bash
 sudo apt install zsh

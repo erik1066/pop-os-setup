@@ -24,6 +24,7 @@ apache2-utils \
 make \
 chromium-browser \
 gnome-tweak-tool \
+gnome-shell-extensions \
 python3-pip \
 libgconf-2-4 \
 code \
@@ -43,13 +44,12 @@ echo "fs.inotify.max_user_watches=10000000" | sudo tee -a /etc/sysctl.conf
 # ------------------------------------
 # Install .NET Core and turn off .NET Core telemetry:
 # ------------------------------------
+echo "export DOTNET_CLI_TELEMETRY_OPTOUT=true" >> ~/.profile
 wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 sudo apt update && sudo apt install dotnet-sdk-3.1 -y
 rm -f packages-microsoft-prod.deb
 dotnet --version
-
-echo "export DOTNET_CLI_TELEMETRY_OPTOUT=true" >> ~/.profile
 
 
 # ------------------------------------
