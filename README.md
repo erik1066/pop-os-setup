@@ -480,6 +480,22 @@ To allow USB pass-through to a guest OS in VirtualBox:
 1. **Preferences** > **Search** > Change the search engine to "[DuckDuckGo](https://duckduckgo.com/)" (or your preferred engine)
 1. **Preferences** > **Privacy** > Change tracking and protection settings as-needed
 
+### Optional: Enable DNS over HTTPS
+
+1. Navigate to **Edit** > **Preferences**
+1. In the **General** tab, scroll down to **Network Settings** and press the **Settings** button
+1. Select **Enable DNS over HTTPS** and select "Cloudflare" as the provider
+
+### Optional: Force GPU rendering to smooth out page scrolling
+
+Firefox in Gnome can experience screen tearing and other performance-inhibiting behavior. This may be adjustable by forcing GPU rendering, though it may impact power usage and stability. This has only been tested using NVIDIA GPUs.
+
+1. Navigate to `about:config` in the Firefox URL bar
+1. Select **Accept the Risk and Continue**
+1. Copy and paste `layers.acceleration.force-enabled` into the search box and **Enable** it
+1. Copy and paste `layers.force-active` into the search box and **Enable** it
+1. Restart Firefox and observe smoother scrolling behavior
+
 ## Chromium
 
 1. From the desktop, select **Activities** (top-left corner of your monitor) > **Pop!\_Shop**
