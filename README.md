@@ -251,9 +251,15 @@ Run `go version` and look for `go version go1.10.4 linux/amd64` (or newer) to ve
 curl https://sh.rustup.rs -sSf | sh
 ```
 
-Restart your terminal session, run `rustc --version`, and look for `rustc 1.41.1 (f3e1a954d 2020-02-24)` (or newer) to verify success.
+Restart your terminal session, run `rustc --version`, and look for `rustc 1.46.0 (04488afe3 2020-08-24)` (or newer) to verify success.
 
 > Alternatively, you may run `sudo apt install cargo`.
+
+You will want to periodically update Rust to the latest version. Do so by running:
+
+```bash
+rustup update
+```
 
 ## Python
 
@@ -273,9 +279,9 @@ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt install nodejs
 ```
 
-Run `npm --version` and look for `6.14.2` (or newer) to verify success
+Run `npm --version` and look for `6.14.8` (or newer) to verify success
 
-Periodically, you will want to update NPM to the latest available version. Do so by running:
+You will want to periodically update NPM to the latest version. Do so by running:
 
 ```bash
 sudo npm install -g npm
@@ -308,7 +314,7 @@ sudo apt update && sudo apt install dotnet-sdk-3.1 -y
 rm -f packages-microsoft-prod.deb
 ```
 
-Run `dotnet --version` and look for `3.1.102` (or newer) to verify success
+Run `dotnet --version` and look for `3.1.402` (or newer) to verify success
 
 ### Optional: Disable .NET Core telemetry
 
@@ -350,13 +356,13 @@ sudo apt update
 sudo apt install docker-ce
 docker --version
 
-# Running "docker --version" should display "Docker version 19.03.6, build 369ce74a3c" or newer
+# Running "docker --version" should display "Docker version 19.03.12, build 48a66213fe" or newer
 
 sudo curl -L "https://github.com/docker/compose/releases/download/1.27.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
-# Running "docker-compose --version" should display "docker-compose version 1.27.2, build 8d51620a"
+# Running "docker-compose --version" should display "docker-compose version 1.27.2, build 18f557f9"
 
 sudo usermod -aG docker $USER
 
@@ -453,7 +459,9 @@ git commit -S -m "My commit msg"
 1. VirtualBox
 1. VLC - for playing media files
 1. Peek - for recording your screen and producing animated GIFs
+1. GNU Image Manipulation Program
 1. Htop
+1. Bleachbit - for secure file erasure and general disk cleanup
 
 ## VirtualBox
 
@@ -523,3 +531,65 @@ The `launch.json` file needed to debug using Chromium is shown below:
 }
 ```
 
+## Installing and Enabling Themes
+
+1. Create folders for the themes and icons:
+
+```bash
+mkdir ~/.themes
+mkdir ~/.icons
+```
+
+2. Download a Gnome theme from Pling to your `Downloads` folder. (We'll use the [WhiteSur GTK theme](https://www.pling.com/p/1403328/))
+1. Extract the contents of the `.tar.xz` to the `.themes` folder
+1. Download a Gnome icon theme from Pling to your `Downloads` folder. (We'll use the [Big Sur Icon Theme](https://www.pling.com/p/1399044/))
+1. Extract the contents of the `.tar.xz` to the `.icons` folder
+1. Open the **Gnome Tweak Tool**
+1. Navigate to the **Extensions** tab
+1. Enable **User Themes**
+1. Navigate to the **Apperance** tab
+1. Select "White Sur-Dark" under **Themes** > **Applications**
+1. Close **Gnome Tweak Tool**
+
+## Installing Cairo Dock
+
+The [Cairo Dock](https://github.com/Cairo-Dock/cairo-dock-core) adds a launcher and a taskbar to your desktop.
+
+```bash
+sudo apt install cairo-dock
+```
+
+Once installed, you will want to enable it as a startup application:
+
+1. Open **Gnome Tweak Tools**
+1. Navigate to **Startup Applications**
+1. Press the **+** button to add a startup application
+1. Select **Cairo Dock**
+
+The Cairo Dock can be themed. Let's install the McOs BS theme to see how we can make Gnome look more like macOS Big Sur.
+
+1. Visit https://www.pling.com/p/1401527/. 
+1. Under **Files**, download the **mcOS-BS-Dark.tar.gz** file and save it to your **Downloads** folder.
+1. Open **Cairo Dock** (if not already open) 
+1. Right-click on the **Applications** icon. A context menu appears.
+1. Select **Cairo Dock** > **Configure**. The Cairo Dock configuration window appears.
+1. Navigate to the **Themes** tab
+1. Select the **Import** button at the bottom-right corner of the window. A file dialog appears.
+1. Select the "mcOS-BS-Dark.tar.gz" file in your **Downloads** folder and press the window's **OK** button.
+
+
+## Installing Fonts
+
+Install the **Font Manager** application:
+
+```bash
+sudo apt install font-manager
+```
+
+Let's install Red Hat's free Overpass font. It can be downloaded or cloned: https://github.com/RedHatOfficial/Overpass. 
+
+Open **Font Manager** and press the **+** button to add a new font. Navigate to the extracted ZIP file (or cloned git repo) and import either the OTF or TTF files, whichever you prefer.
+
+Open **Gnome Tweak Tool** and open the **Fonts** tab. Select "Overpass" from the **Interface Text** drop-down list. The changes should be visible immediately.
+
+> Some custom fonts, including "Overpass", may look better with **Hinting** set to "None".
