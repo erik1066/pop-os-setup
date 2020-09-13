@@ -2,7 +2,7 @@
 
 This repository contains instructions to set up [Pop!\_OS](https://system76.com/pop) for developing software in Go, Rust, C# (.NET Core), Java, Python, and NodeJS, as well as web front-ends in React. The steps below should also work for Ubuntu and most Ubuntu-based Linux distributions.
 
-![Pop!_OS desktop screenshot with various developer tools displayed and the Arc Dark theme](images/screenshot01.png "Pop!_OS desktop screenshot with various developer tools displayed and the Arc Dark theme")
+![Pop!_OS desktop screenshot with Tilix, Visual Studio Code, and Gnome Tweak Tool, displayed and the Arc Dark theme](images/screenshot01.png "Pop!_OS desktop screenshot with Tilix, Visual Studio Code, and Gnome Tweak Tool, displayed and the Arc Dark theme")
 
 ## Update the OS and install common tools
 
@@ -533,6 +533,10 @@ The `launch.json` file needed to debug using Chromium is shown below:
 ```
 
 ## Installing and Enabling Themes
+
+Some themes are available in the central repos. For instance, to install the excellent Arc theme, simply run `sudo apt install arc-theme`. "Arc-Dark" is then available as a theme in **Gnome Tweak Tool**.
+
+More themes are available for download on pling.com. For these, extra steps are required to install:
 
 1. Create folders for the themes and icons:
 
