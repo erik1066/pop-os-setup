@@ -452,7 +452,7 @@ To sign commits, the only difference is the addition of the `-S` flag:
 git commit -S -m "My commit msg"
 ```
 
-## Other Items in Pop!\_Store to consider installing:
+## Other Items in Pop!\_Shop to consider installing:
 
 1. Dropbox
 1. Slack
