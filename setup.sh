@@ -32,6 +32,13 @@ arc-theme
 
 
 # ------------------------------------
+# Add Flathub.org as a Flatpak repo
+# ------------------------------------
+
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+
+# ------------------------------------
 # Install NodeJS:
 # ------------------------------------
 
@@ -71,7 +78,7 @@ sudo apt update
 sudo apt install -y docker-ce
 docker --version
 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
@@ -81,19 +88,23 @@ sudo usermod -aG docker $USER
 # ------------------------------------
 # Install Postman:
 # ------------------------------------
-sudo apt install libgconf-2-4
-cd ~/Downloads
-wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
-sudo tar -xzf postman.tar.gz -C /opt
-sudo ln -s /opt/Postman/Postman /usr/bin/postman
 
-cat > ~/.local/share/applications/postman.desktop <<EOL
-[Desktop Entry]
-Encoding=UTF-8
-Name=Postman
-Exec=postman
-Icon=/opt/Postman/app/resources/app/assets/icon.png
-Terminal=false
-Type=Application
-Categories=Development;
-EOL
+# sudo apt install libgconf-2-4
+# cd ~/Downloads
+# wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
+# sudo tar -xzf postman.tar.gz -C /opt
+# sudo ln -s /opt/Postman/Postman /usr/bin/postman
+
+# cat > ~/.local/share/applications/postman.desktop <<EOL
+# [Desktop Entry]
+# Encoding=UTF-8
+# Name=Postman
+# Exec=postman
+# Icon=/opt/Postman/app/resources/app/assets/icon.png
+# Terminal=false
+# Type=Application
+# Categories=Development;
+# EOL
+
+### Alternative postman install from Flathub
+sudo flatpak install flathub com.getpostman.Postman

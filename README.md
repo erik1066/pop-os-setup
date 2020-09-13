@@ -1,8 +1,8 @@
-# Pop!\_OS 18.04 Setup for Web Developers
+# Pop!\_OS 20.04 Setup for Web Developers
 
 This repository contains instructions to set up [Pop!\_OS](https://system76.com/pop) for developing software in Go, Rust, C# (.NET Core), Java, Python, and NodeJS, as well as web front-ends in React. The steps below should also work for Ubuntu and most Ubuntu-based Linux distributions.
 
-![Pop!_OS desktop screenshot with various developer tools displayed and the Arc Dark theme](images/screenshot01.png "Pop!_OS desktop screenshot with various developer tools displayed and the Arc Dark theme")
+![Pop!_OS desktop screenshot with Tilix, Visual Studio Code, and Gnome Tweak Tool, displayed and the Arc Dark theme](images/screenshot01.png "Pop!_OS desktop screenshot with Tilix, Visual Studio Code, and Gnome Tweak Tool, displayed and the Arc Dark theme")
 
 ## Update the OS and install common tools
 
@@ -29,22 +29,18 @@ chromium-browser \
 gnome-tweak-tool \
 gnome-shell-extensions \
 python3-pip \
+dconf-editor \
 libgconf-2-4
 ```
 
-## Enable Dark Mode and Improve Font Rendering
+## Improve Font Rendering
 
-The default font rendering in Pop!\_OS may appear blurry on most LCD monitors. I also happen to enjoy using the OS's dark mode. However, Gnome's OS settings application lacks the ability to set dark mode and to change font rendering. You must install the Gnome Tweak Tool to adjust these settings. Gnome Tweak Tool can be installed from the Pop!\_Shop or from a terminal as shown below:
+The default font rendering in Pop!\_OS may appear blurry on LCD monitors. Gnome's OS settings application lacks the ability to change font rendering. You must install the Gnome Tweak Tool to adjust these settings. Gnome Tweak Tool can be installed from the Pop!\_Shop or from a terminal as shown below:
 
 1. Run `sudo apt install gnome-tweak-tool`
 1. Run `gnome-tweaks`
-1. **Appearance** > **Themes** > **Applications** : Set to "Pop-dark" or "Adwaita-dark"
 1. **Fonts** > **Hinting** > Set to "Full"
 1. **Fonts** > **Antialiasing** > Set to "Subpixel (for LCD screens)"
-
-You can also install the "Arc" theme for Gnome if you prefer a Dark Mode alternative:
-
-`sudo apt install arc-theme`
 
 ## Increase the inotify watch count
 
@@ -191,8 +187,24 @@ There are some excellent dark theme alternatives to the VS Code default theme:
 1. [Atom One Dark Theme](https://marketplace.visualstudio.com/items?itemName=akamud.vscode-theme-onedark)
 1. [Material Theme](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme)
 1. [Blueberry Dark Theme](https://marketplace.visualstudio.com/items?itemName=peymanslh.blueberry-dark-theme)
+1. [Arc+ Theme](https://marketplace.visualstudio.com/items?itemName=ph-hawkins.arc-plus)
 
 ## Postman
+
+Postman can be installed in one of three ways. The easiest is to open the **Pop!_Shop** and install Postman using the GUI. 
+
+> Installing Postman from **Pop!_Shop** installs from Flathub. 
+
+### Alternative: Install Postman from flathub using the terminal
+
+You may alternatively install Postman from Flathub using a terminal session. However, in Pop!_OS 20.04, you must first add the Flathub remote repository. Both commands are shown below:
+
+```bash
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub com.getpostman.Postman
+```
+
+### Alternative: Install Postman from .tar.gz using the terminal
 
 ```bash
 sudo apt install libgconf-2-4
@@ -213,8 +225,10 @@ Categories=Development;
 EOL
 ```
 
+Be sure to pin Postman by adding it to your favorites:
+
 1. Navigate to **Activities** on the main Pop_OS! desktop and select **Show Applications**
-1. Right-click on **Postman** and select **Add to favorites**
+1. Right-click on **Postman** and select **Add to favorites** 
 
 ## Java and Maven
 
@@ -238,9 +252,15 @@ Run `go version` and look for `go version go1.10.4 linux/amd64` (or newer) to ve
 curl https://sh.rustup.rs -sSf | sh
 ```
 
-Restart your terminal session, run `rustc --version`, and look for `rustc 1.41.1 (f3e1a954d 2020-02-24)` (or newer) to verify success.
+Restart your terminal session, run `rustc --version`, and look for `rustc 1.46.0 (04488afe3 2020-08-24)` (or newer) to verify success.
 
 > Alternatively, you may run `sudo apt install cargo`.
+
+You will want to periodically update Rust to the latest version. Do so by running:
+
+```bash
+rustup update
+```
 
 ## Python
 
@@ -260,9 +280,9 @@ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt install nodejs
 ```
 
-Run `npm --version` and look for `6.14.2` (or newer) to verify success
+Run `npm --version` and look for `6.14.8` (or newer) to verify success
 
-Periodically, you will want to update NPM to the latest available version. Do so by running:
+You will want to periodically update NPM to the latest version. Do so by running:
 
 ```bash
 sudo npm install -g npm
@@ -295,7 +315,7 @@ sudo apt update && sudo apt install dotnet-sdk-3.1 -y
 rm -f packages-microsoft-prod.deb
 ```
 
-Run `dotnet --version` and look for `3.1.102` (or newer) to verify success
+Run `dotnet --version` and look for `3.1.402` (or newer) to verify success
 
 ### Optional: Disable .NET Core telemetry
 
@@ -337,13 +357,13 @@ sudo apt update
 sudo apt install docker-ce
 docker --version
 
-# Running "docker --version" should display "Docker version 19.03.6, build 369ce74a3c" or newer
+# Running "docker --version" should display "Docker version 19.03.12, build 48a66213fe" or newer
 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
-# Running "docker-compose --version" should display "docker-compose version 1.25.4, build 8d51620a"
+# Running "docker-compose --version" should display "docker-compose version 1.27.2, build 18f557f9"
 
 sudo usermod -aG docker $USER
 
@@ -440,7 +460,9 @@ git commit -S -m "My commit msg"
 1. VirtualBox
 1. VLC - for playing media files
 1. Peek - for recording your screen and producing animated GIFs
+1. GNU Image Manipulation Program
 1. Htop
+1. Bleachbit - for secure file erasure and general disk cleanup
 
 ## VirtualBox
 
@@ -510,3 +532,69 @@ The `launch.json` file needed to debug using Chromium is shown below:
 }
 ```
 
+## Installing and Enabling Themes
+
+Some themes are available in the central repos. For instance, to install the excellent Arc theme, simply run `sudo apt install arc-theme`. "Arc-Dark" is then available as a theme in **Gnome Tweak Tool**.
+
+More themes are available for download on pling.com. For these, extra steps are required to install:
+
+1. Create folders for the themes and icons:
+
+```bash
+mkdir ~/.themes
+mkdir ~/.icons
+```
+
+2. Download a Gnome theme from Pling to your `Downloads` folder. (We'll use the [WhiteSur GTK theme](https://www.pling.com/p/1403328/))
+1. Extract the contents of the `.tar.xz` to the `.themes` folder
+1. Download a Gnome icon theme from Pling to your `Downloads` folder. (We'll use the [Big Sur Icon Theme](https://www.pling.com/p/1399044/))
+1. Extract the contents of the `.tar.xz` to the `.icons` folder
+1. Open the **Gnome Tweak Tool**
+1. Navigate to the **Extensions** tab
+1. Enable **User Themes**
+1. Navigate to the **Apperance** tab
+1. Select "White Sur-Dark" under **Themes** > **Applications**
+1. Close **Gnome Tweak Tool**
+
+## Installing Cairo Dock
+
+The [Cairo Dock](https://github.com/Cairo-Dock/cairo-dock-core) adds a launcher and a taskbar to your desktop.
+
+```bash
+sudo apt install cairo-dock
+```
+
+Once installed, you will want to enable it as a startup application:
+
+1. Open **Gnome Tweak Tools**
+1. Navigate to **Startup Applications**
+1. Press the **+** button to add a startup application
+1. Select **Cairo Dock**
+
+The Cairo Dock can be themed. Let's install the McOs BS theme to see how we can make Gnome look more like macOS Big Sur.
+
+1. Visit https://www.pling.com/p/1401527/. 
+1. Under **Files**, download the **mcOS-BS-Dark.tar.gz** file and save it to your **Downloads** folder.
+1. Open **Cairo Dock** (if not already open) 
+1. Right-click on the **Applications** icon. A context menu appears.
+1. Select **Cairo Dock** > **Configure**. The Cairo Dock configuration window appears.
+1. Navigate to the **Themes** tab
+1. Select the **Import** button at the bottom-right corner of the window. A file dialog appears.
+1. Select the "mcOS-BS-Dark.tar.gz" file in your **Downloads** folder and press the window's **OK** button.
+
+
+## Installing Fonts
+
+Install the **Font Manager** application:
+
+```bash
+sudo apt install font-manager
+```
+
+Let's install Red Hat's free Overpass font. It can be downloaded or cloned: https://github.com/RedHatOfficial/Overpass. 
+
+Open **Font Manager** and press the **+** button to add a new font. Navigate to the extracted ZIP file (or cloned git repo) and import either the OTF or TTF files, whichever you prefer.
+
+Open **Gnome Tweak Tool** and open the **Fonts** tab. Select "Overpass" from the **Interface Text** drop-down list. The changes should be visible immediately.
+
+> Some custom fonts, including "Overpass", may look better with **Hinting** set to "None".
