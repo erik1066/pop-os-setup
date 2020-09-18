@@ -413,6 +413,15 @@ pip3 install --upgrade --user awscli
 
 > You can alternatively install the `awscli` package using `apt`, but it may be out-of-date compared to using the `pip` method.
 
+## GitHub CLI tools
+
+```bash
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+sudo apt-add-repository https://cli.github.com/packages
+sudo apt update
+sudo apt install gh
+```
+
 ## Git configuration
 
 ```bash
