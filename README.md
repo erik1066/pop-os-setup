@@ -76,7 +76,7 @@ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/to
 install.sh -O -)"
 ```
 
-An "Oh My Zsh!... is now installed" message should appear in the termal output. You may be prompted to set ZSH as your default shell.
+An "Oh My Zsh!... is now installed" message should appear in the terminal output. You may be prompted to set ZSH as your default shell.
 
 ### Optional: Enable ZSH syntax highlighting
 Install syntax highlighting for ZSH by running:
