@@ -280,7 +280,7 @@ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt install nodejs
 ```
 
-Run `npm --version` and look for `6.14.8` (or newer) to verify success
+Run `npm --version` and look for `7.5.4` (or newer) to verify success
 
 You will want to periodically update NPM to the latest version. Do so by running:
 
@@ -315,7 +315,7 @@ sudo apt update && sudo apt install dotnet-sdk-5.0 -y
 rm -f packages-microsoft-prod.deb
 ```
 
-Run `dotnet --version` and look for `5.0.100` (or newer) to verify success
+Run `dotnet --version` and look for `5.0.103` (or newer) to verify success
 
 ### Optional: Disable .NET Core telemetry
 
@@ -359,11 +359,11 @@ docker --version
 
 # Running "docker --version" should display "Docker version 19.03.12, build 48a66213fe" or newer
 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.27.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.28.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
-# Running "docker-compose --version" should display "docker-compose version 1.27.2, build 18f557f9"
+# Running "docker-compose --version" should display "docker-compose version 1.28.2, build 67630359"
 
 sudo usermod -aG docker $USER
 
