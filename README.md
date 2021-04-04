@@ -311,18 +311,30 @@ To install Anaconda Python instead, see https://linuxhint.com/install_anaconda_p
 
 ## NodeJS
 
+The quick way to install NodeJS 14 (LTS):
+
 ```bash
-sudo apt install build-essential
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-sudo apt install nodejs
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt install -y nodejs npm
 ```
 
-Run `npm --version` and look for `7.5.4` (or newer) to verify success
+Run `node --version` and look for `v14.16.0` (or newer) to verify success.
 
-You will want to periodically update NPM to the latest version. Do so by running:
+### Optional: Install NodeJS with a manual inspection of the shell script
+
+If you wish to inspect the shell script before running it:
 
 ```bash
-sudo npm install -g npm
+cd ~
+curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
+nano nodesource_setup.sh
+```
+
+Run the following if you're satisfied with the script:
+
+```bash
+sudo bash nodesource_setup.sh
+sudo apt install nodejs
 ```
 
 ### Removing NodeJS
