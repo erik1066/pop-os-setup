@@ -17,6 +17,7 @@ Next, install common development tools:
 ```bash
 sudo apt install \
 openjdk-8-jdk-headless \
+openjdk-11-jdk-headless \
 maven \
 build-essential \
 apt-transport-https \
@@ -33,6 +34,27 @@ dconf-editor \
 libgconf-2-4
 ```
 
+Cleanup:
+
+```bash
+sudo apt autoremove -y
+sudo apt autoclean -y
+```
+
+Check for firmware updates:
+
+```bash
+sudo fwupdmgr get-devices
+sudo fwupdmgr get-updates
+sudo fwupdmgr update
+```
+
+Reboot before proceeding any further:
+
+```bash
+sudo reboot now
+```
+
 ## Improve Font Rendering
 
 The default font rendering in Pop!\_OS may appear blurry on LCD monitors. Gnome's OS settings application lacks the ability to change font rendering. You must install the Gnome Tweak Tool to adjust these settings. Gnome Tweak Tool can be installed from the Pop!\_Shop or from a terminal as shown below:
@@ -41,6 +63,15 @@ The default font rendering in Pop!\_OS may appear blurry on LCD monitors. Gnome'
 1. Run `gnome-tweaks`
 1. **Fonts** > **Hinting** > Set to "Full"
 1. **Fonts** > **Antialiasing** > Set to "Subpixel (for LCD screens)"
+
+## Install Microsoft fonts
+
+If you need to work with documents that are built using Microsoft fonts:
+
+```bash
+sudo apt install -y mscorefonts-installer
+sudo fc-cache -f -v
+```
 
 ## Increase the inotify watch count
 
@@ -233,10 +264,16 @@ Be sure to pin Postman by adding it to your favorites:
 ## Java and Maven
 
 ```bash
-sudo apt install openjdk-8-jdk-headless maven
+sudo apt install openjdk-11-jdk-headless maven
 ```
 
-Run `javac -version` and look for `javac 1.8.0_222` (or newer) to verify success
+Run `javac -version` and look for the following output to verify success:
+
+```
+openjdk version "11.0.10" 2021-01-19
+OpenJDK Runtime Environment (build 11.0.10+9-Ubuntu-0ubuntu1.20.04)
+OpenJDK 64-Bit Server VM (build 11.0.10+9-Ubuntu-0ubuntu1.20.04, mixed mode, sharing)
+```
 
 ## Go
 
@@ -311,11 +348,17 @@ sudo apt install apt-transport-https ca-certificates
 cd ~/Downloads
 wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
-sudo apt update && sudo apt install dotnet-sdk-5.0 -y
+sudo apt update && sudo apt install -y dotnet-sdk-2.1 dotnet-sdk-3.1 dotnet-sdk-5.0
 rm -f packages-microsoft-prod.deb
 ```
 
-Run `dotnet --version` and look for `5.0.103` (or newer) to verify success
+Run `dotnet --list-sdks` and look for the following output to verify success:
+
+```
+2.1.814 [/usr/share/dotnet/sdk]
+3.1.407 [/usr/share/dotnet/sdk]
+5.0.201 [/usr/share/dotnet/sdk]
+```
 
 ### Optional: Disable .NET Core telemetry
 
@@ -359,7 +402,7 @@ docker --version
 
 # Running "docker --version" should display "Docker version 19.03.12, build 48a66213fe" or newer
 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.28.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.28.6/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
@@ -374,44 +417,76 @@ After restarting the machine, run `docker run hello-world` and look for a "Hello
 
 ## Azure CLI tools
 
-See [Install Azure CLI with apt](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest) for further information.
-
 ```bash
-sudo apt-get install apt-transport-https lsb-release software-properties-common dirmngr -y
+# Get packages needed for the install process:
+sudo apt-get update
+sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg
 
+# Download and install the Microsoft signing key:
+curl -sL https://packages.microsoft.com/keys/microsoft.asc |
+    gpg --dearmor |
+    sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
+
+# Add the Azure CLI software repository:
 AZ_REPO=$(lsb_release -cs)
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | \
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" |
     sudo tee /etc/apt/sources.list.d/azure-cli.list
 
-sudo apt-key --keyring /etc/apt/trusted.gpg.d/Microsoft.gpg adv \
-     --keyserver packages.microsoft.com \
-     --recv-keys BC528686B50D79E339D3721CEB3E94ADBE1229CF
-
+# Update repository information and install the azure-cli package:
 sudo apt-get update
 sudo apt-get install azure-cli
 ```
 
+Verify success by running `az --version` and checking that `azure-cli 2.21.0` (or newer) appears somewhere in the output. Additionally, the output should indicate that `Your CLI is up-to-date`.
+
+> See [Install Azure CLI with apt](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest) for further information.
+
+## Azure Storage Explorer
+
+Azure's desktop app for interacting with Azure Storage is cross-platform. Installing it on an Ubuntu-based distribution can be done as follows:
+
+```bash
+sudo apt update && sudo apt install -y dotnet-sdk-2.1 build-essential libsecret-1-0 libgconf-2-4
+wget https://download.microsoft.com/download/A/E/3/AE32C485-B62B-4437-92F7-8B6B2C48CB40/StorageExplorer-linux-x64.tar.gz -O ~/Downloads/StorageExplorer-linux-x64.tar.gz
+cd ~/Downloads
+mkdir -p ~/azure-storage-explorer
+tar xvf StorageExplorer-linux-x64.tar.gz -C ~/azure-storage-explorer
+cd ~/azure-storage-explorer
+./StorageExplorer
+```
+
+Next, create an application icon, making sure that you replace `yourusername` with your actual user name:
+
+```bash
+cat > ~/.local/share/applications/azurestorageexplorer.desktop <<EOL
+[Desktop Entry]
+Encoding=UTF-8
+Name=Azure Storage Explorer
+Comment=Azure Storage Explorer
+Exec=/home/yourusername/azure-storage-explorer/StorageExplorer
+Icon=/home/yourusername/azure-storage-explorer/resources/app/out/app/icon.png
+Terminal=false
+Type=Application
+Keywords=Azure,IDE,Development,Storage,Data
+Categories=Development;IDE;
+EOL
+```
+
+Azure Storage Explorer should now appear in your list of applications. If it doesn't appear after creating and saving the `.desktop` file, then you may need to log out and log in.
+
 ## AWS CLI tools
 
-See [Install AWS CLI on Linux](https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html) for further information.
+The following script installs v2 of the AWS CLI tools:
 
 ```bash
-sudo apt install -y python3-pip
-pip3 install awscli --upgrade --user
-PATH="$HOME/.local/bin:$PATH"
+sudo apt install -y unzip
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+sudo ./aws/install
 ```
 
-Run `aws --version` and `pip3 --version` to verify success.
+Run `aws --version` and check for `aws-cli/2.1.34 Python/3.8.8 Linux/4.4.0-19041-Microsoft exe/x86_64.ubuntu.20 prompt/off` to verify success.
 
-> Pop!\_OS's default configuration doesn't inclue a `~/.local/bin` folder which is why we add it to `PATH` in the above set of commands - otherwise, the `aws` CLI tools won't be found when we try and use them in the terminal. However, when you log out and log in, you will not have to set the PATH again. The Pop!\_OS profile setup script checks for this folder automatically on login and if it exists at that time, it will be adde to `PATH`.
-
-Since the AWS CLI was installed via `pip` and not from `apt`, the `apt update` command will not detect updates for `aws`. Instead, will need to run a different command to update the AWS CLI tools:
-
-```bash
-pip3 install --upgrade --user awscli
-```
-
-> You can alternatively install the `awscli` package using `apt`, but it may be out-of-date compared to using the `pip` method.
+> See https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html for additional information.
 
 ## GitHub CLI tools
 
@@ -461,12 +536,22 @@ To sign commits, the only difference is the addition of the `-S` flag:
 git commit -S -m "My commit msg"
 ```
 
+## VLC for media playback
+
+```bash
+sudo apt install -y vlc
+sudo apt install -y libavcodec-extra libdvd-pkg
+sudo dpkg-reconfigure libdvd-pkg
+```
+
 ## Other Items in Pop!\_Shop to consider installing:
 
 1. Dropbox
 1. Slack
 1. Spotify
 1. VirtualBox
+1. Zoom
+1. Microsoft Teams
 1. VLC - for playing media files
 1. Peek - for recording your screen and producing animated GIFs
 1. GNU Image Manipulation Program

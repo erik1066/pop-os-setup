@@ -3,6 +3,7 @@
 # ------------------------------------
 # Install updates:
 # ------------------------------------
+
 sudo apt update && sudo apt dist-upgrade -y
 
 
@@ -12,6 +13,7 @@ sudo apt update && sudo apt dist-upgrade -y
 
 sudo apt install -y \
 openjdk-8-jdk-headless \
+openjdk-11-jdk-headless \
 maven \
 golang-go \
 python3-minimal \
@@ -42,19 +44,19 @@ sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub
 # Install NodeJS:
 # ------------------------------------
 
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install -y nodejs
-sudo npm install -g npm
 echo "fs.inotify.max_user_watches=10000000" | sudo tee -a /etc/sysctl.conf
 
 
 # ------------------------------------
 # Install .NET Core and turn off .NET Core telemetry:
 # ------------------------------------
+
 echo "export DOTNET_CLI_TELEMETRY_OPTOUT=true" >> ~/.profile
 wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
-sudo apt update && sudo apt install dotnet-sdk-3.1 dotnet-sdk-5.0 -y
+sudo apt update && sudo apt install dotnet-sdk-2.1 dotnet-sdk-3.1 dotnet-sdk-5.0 -y
 rm -f packages-microsoft-prod.deb
 dotnet --version
 
@@ -62,6 +64,7 @@ dotnet --version
 # ------------------------------------
 # Install Docker and Docker Compose:
 # ------------------------------------
+
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo apt-key fingerprint 0EBFCD88
@@ -78,7 +81,7 @@ sudo apt update
 sudo apt install -y docker-ce
 docker --version
 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.28.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.28.6/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
@@ -109,10 +112,21 @@ sudo usermod -aG docker $USER
 ### Alternative postman install from Flathub
 sudo flatpak install flathub com.getpostman.Postman
 
+
 # ------------------------------------
 # Install GitHub CLI tools:
 # ------------------------------------
+
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
 sudo apt-add-repository https://cli.github.com/packages
 sudo apt update
 sudo apt install gh
+
+
+# ------------------------------------
+# Install VLC:
+# ------------------------------------
+
+sudo apt install -y vlc
+sudo apt install -y libavcodec-extra libdvd-pkg
+sudo dpkg-reconfigure libdvd-pkg
