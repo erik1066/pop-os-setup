@@ -281,7 +281,7 @@ OpenJDK 64-Bit Server VM (build 11.0.10+9-Ubuntu-0ubuntu1.20.04, mixed mode, sha
 sudo apt install golang-go
 ```
 
-Run `go version` and look for `go version go1.10.4 linux/amd64` (or newer) to verify success
+Run `go version` and look for `go version go1.13.8 linux/amd64` (or newer) to verify success
 
 ## Rust
 
