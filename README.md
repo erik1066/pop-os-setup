@@ -369,7 +369,7 @@ Run `dotnet --list-sdks` and look for the following output to verify success:
 ```
 2.1.814 [/usr/share/dotnet/sdk]
 3.1.407 [/usr/share/dotnet/sdk]
-5.0.201 [/usr/share/dotnet/sdk]
+5.0.202 [/usr/share/dotnet/sdk]
 ```
 
 ### Optional: Disable .NET Core telemetry
