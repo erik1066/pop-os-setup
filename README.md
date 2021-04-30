@@ -305,7 +305,7 @@ rustup update
 sudo apt install python3-minimal
 ```
 
-Run `python3 --version` and look for `Python 3.6.9` (or newer) to verify success
+Run `python3 --version` and look for `Python 3.8.5` (or newer) to verify success
 
 To install Anaconda Python instead, see https://linuxhint.com/install_anaconda_python_ubuntu_1804/.
 
@@ -318,7 +318,7 @@ curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install -y nodejs npm
 ```
 
-Run `node --version` and look for `v14.16.0` (or newer) to verify success.
+Run `node --version` and look for `v14.16.1` (or newer) to verify success.
 
 ### Optional: Install NodeJS with a manual inspection of the shell script
 
@@ -414,7 +414,7 @@ docker --version
 
 # Running "docker --version" should display "Docker version 19.03.12, build 48a66213fe" or newer
 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.28.6/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
