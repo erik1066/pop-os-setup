@@ -360,16 +360,15 @@ sudo apt install apt-transport-https ca-certificates
 cd ~/Downloads
 wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
-sudo apt update && sudo apt install -y dotnet-sdk-2.1 dotnet-sdk-3.1 dotnet-sdk-5.0
+sudo apt update && sudo apt install -y dotnet-sdk-3.1 dotnet-sdk-6.0
 rm -f packages-microsoft-prod.deb
 ```
 
 Run `dotnet --list-sdks` and look for the following output to verify success:
 
 ```
-2.1.814 [/usr/share/dotnet/sdk]
-3.1.407 [/usr/share/dotnet/sdk]
-5.0.202 [/usr/share/dotnet/sdk]
+3.1.414 [/usr/share/dotnet/sdk]
+6.0.100 [/usr/share/dotnet/sdk]
 ```
 
 ### Optional: Disable .NET Core telemetry
