@@ -496,16 +496,6 @@ sudo dpkg-reconfigure libdvd-pkg
 1. Htop
 1. Bleachbit - for secure file erasure and general disk cleanup
 
-## VirtualBox
-
-1. From the desktop, select **Activities** (top-left corner of your monitor) > **Pop!\_Shop**
-1. Search for "VirtualBox" and install it
-
-To allow USB pass-through to a guest OS in VirtualBox:
-
-1. Run `sudo adduser $USER vboxusers`
-1. Log out and in again
-
 ## Firefox
 
 1. Install the [React Developer Tools](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) addon
@@ -620,3 +610,72 @@ Open **Font Manager** and press the **+** button to add a new font. Navigate to 
 Open **Gnome Tweak Tool** and open the **Fonts** tab. Select "Overpass" from the **Interface Text** drop-down list. The changes should be visible immediately.
 
 > Some custom fonts, including "Overpass", may look better with **Hinting** set to "None".
+
+## VirtualBox
+
+1. From the desktop, select **Activities** (top-left corner of your monitor) > **Pop!\_Shop**
+1. Search for "VirtualBox" and install it
+
+To allow USB pass-through to a guest OS in VirtualBox:
+
+1. Run `sudo adduser $USER vboxusers`
+1. Log out and in again
+
+
+## KVM + QEMU + VirtManager
+
+**Instructions derived from https://ubuntu.com/blog/kvm-hyphervisor?ref=itsfoss.com and https://www.youtube.com/watch?v=BgZHbCDFODk**
+
+An alternative to VirtualBox is to use Linux's built-in Kernel Virtual Machine (KVM) plus QEMU and VirtManager for a GUI front-end.
+
+```bash
+sudo apt -y install bridge-utils cpu-checker libvirt-clients libvirt-daemon qemu qemu-kvm virt-manager
+```
+
+Check that your processor supports virtualization:
+
+```bash
+kvm-ok
+```
+
+Look for:
+
+```
+INFO: /dev/kvm exists
+KVM acceleration can be used
+```
+
+Add the current user to the kvm group, being sure to replace `yourusername` with your actual user name:
+
+```bash
+sudo usermod -aG libvirt yourusername
+sudo usermod -aG kvm yourusername
+```
+
+Restart your system and then run these commands:
+
+```bash
+sudo systemctl start libvirtd
+sudo systemctl enable libvirtd
+```
+
+### Create a new VM using `virt-manager`
+1. Download a [Pop!_OS ISO](https://pop.system76.com/) or the ISO of your choice
+1. Place the `.iso` file into the `/var/lib/libvirt/images` folder
+1. Open the **Virtual Machine Manager** (aka `virt-manager`)
+1. Add a new virtual machine. Note that if you get a connection error, you should reboot your machine.
+1. Select **Local install media** and then **Forward**. Step 2 of 5 appears.
+1. Select **Browse**. The ISO you copied into the `/var/lib/libvirt/images` folder should appear.
+1. Select the ISO and choose **Choose Volume**
+1. You  may need to select an operating system. if Virtual Machine Manager couldn't auto-detect one based on the ISO. In our case, if using Pop!_OS 22.04, select "Ubuntu 22.04 LTS"
+1. Select **Forward**
+1. Choose at least "8192" for memory and 2 CPUs and then select **Forward**
+1. Choose at least 25 GB of disk storage and select **Forward**
+1. Use a distinctive name for the VM, such as "K3s-pop-os" and select **Finish**
+1. The VM should start automatically. Go through the VM setup process.
+
+Run `sudo apt update && sudo apt upgrade -y` after OS configuration.
+
+### Taking VM snapshots in `virt-manager`
+
+Snapshots can be taken in `virt-manager` just like in Virtual Box. You must navigate into the VM window (not the Virtual Machine Manager window) and select the **Manage VM Snapshots** icon at the far right of the toolbar.
