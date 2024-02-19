@@ -190,9 +190,13 @@ flatpak install flathub com.getpostman.Postman
 
 ## Install Visual Studio Code
 
-1. From the desktop, select **Activities** (top-left corner of your monitor) > **Pop!\_Shop**
-1. Search for "Visual Studio Code" and install it
-1. Launch Visual Studio Code
+1. From the desktop, select **Activities** (top-left corner of your monitor) > **Pop!\_Shop**, search for "Visual Studio Code" and install it. Alternatively, you can run this command:
+
+```bash
+flatpak install flathub com.visualstudio.code
+```
+
+2. Launch Visual Studio Code
 1. Navigate **File** > **Preferences** > **Settings** and then type "telemetry"
 1. Select "off" for the **Telemetry Level** 
 1. Disable the "Dotnet Acquisition Extension: Enable Telemetry" option
@@ -204,9 +208,7 @@ flatpak install flathub com.getpostman.Postman
 
 Or, to install from the command line, run:
 
-```bash
-flatpak install flathub com.visualstudio.code
-```
+
 
 
 The following VS Code extensions are handy:
