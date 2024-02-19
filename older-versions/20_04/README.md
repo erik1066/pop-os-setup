@@ -1,4 +1,4 @@
-# Pop!\_OS 22.04 Setup for Software Engineers
+# Pop!\_OS 20.04 Setup for Web Developers
 
 This repository contains instructions to set up [Pop!\_OS](https://system76.com/pop) for developing software in Go, Rust, C# (.NET Core), Java, Python, and NodeJS, as well as web front-ends in React. The steps below should also work for Ubuntu and most Ubuntu-based Linux distributions.
 
@@ -16,6 +16,9 @@ Next, install common development tools:
 
 ```bash
 sudo apt install \
+openjdk-8-jdk-headless \
+openjdk-11-jdk-headless \
+maven \
 build-essential \
 apt-transport-https \
 ca-certificates \
@@ -24,9 +27,11 @@ software-properties-common \
 apache2-utils \
 make \
 chromium-browser \
-gnome-tweaks \
+gnome-tweak-tool \
 gnome-shell-extensions \
-dconf-editor
+python3-pip \
+dconf-editor \
+libgconf-2-4
 ```
 
 Cleanup:
@@ -54,12 +59,19 @@ sudo reboot now
 
 The default font rendering in Pop!\_OS may appear blurry on LCD monitors. Gnome's OS settings application lacks the ability to change font rendering. You must install the Gnome Tweak Tool to adjust these settings. Gnome Tweak Tool can be installed from the Pop!\_Shop or from a terminal as shown below:
 
-1. Run `sudo apt install gnome-tweaks`
+1. Run `sudo apt install gnome-tweak-tool`
 1. Run `gnome-tweaks`
 1. **Fonts** > **Hinting** > Set to "Full"
 1. **Fonts** > **Antialiasing** > Set to "Subpixel (for LCD screens)"
 
-> The Pop!_OS defaults are: "Slight" for Hinting and "Standard" for Antialiasing, in case you want to switch back.
+## Install Microsoft fonts
+
+If you need to work with documents that are built using Microsoft fonts:
+
+```bash
+sudo apt install -y mscorefonts-installer
+sudo fc-cache -f -v
+```
 
 ## Increase the inotify watch count
 
@@ -79,34 +91,23 @@ sudo apt install tilix
 
 ## Z Shell (ZSH)
 
-**Instructions derived from https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH on 2024-02-18**
-
 [ZSH](https://en.wikipedia.org/wiki/Z_shell) can be installed by running:
 
 ```bash
 sudo apt install zsh
 ```
 
-Run `zsh --version` and look for `zsh 5.8.1 (x86_64-ubuntu-linux-gnu)` (or newer) to verify success
-
-To set `zsh` as the default shell, run:
-
-```bash
-chsh -s $(which zsh)
-```
-
-Start a new session. ZSH is now your default shell.
+Run `zsh --version` and look for `zsh 5.8 (x86_64-ubuntu-linux-gnu)` (or newer) to verify success
 
 ### Optional: Install Oh-My-ZSH for ZSH configuration management
 [Oh-My-ZSH](https://github.com/ohmyzsh/ohmyzsh) is an excellent tool for managing your ZSH configuration. Install it using the following command:
 
 ```bash
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/
+install.sh -O -)"
 ```
 
-An "Oh My Zsh!... is now installed!" message should appear in the terminal output. 
-
-> You may be prompted to set ZSH as your default shell.
+An "Oh My Zsh!... is now installed" message should appear in the terminal output. You may be prompted to set ZSH as your default shell.
 
 ### Optional: Enable ZSH syntax highlighting
 Install syntax highlighting for ZSH by running:
@@ -149,72 +150,57 @@ plugins=(git dotnet rust rustup golang mvn npm terraform aws gradle)
 
 Save the file. The plugins will be applied to new terminal windows.
 
-## Install Eclipse for Java Developers
+## Spring Tool Suite (STS) 4:
 
-1. From the desktop, select **Activities** (top-left corner of your monitor) > **Pop!\_Shop**
-1. Search for "Eclipse" and install "Eclipse for Java Developers"
-1. Launch Eclipse
+1. Visit https://spring.io/tools
+1. Download the "STS4" Linux package to the "Downloads" folder
+1. Run `cd ~/Downloads`
+1. Run `sudo tar -xvf spring-tool-suite-4-4.0.1.RELEASE-e4.9.0-linux.gtk.x86_64.tar.gz` (replace the filename shown here with the one you downloaded, if newer)
+1. Run `sudo nano /usr/share/applications/STS.desktop`
+1. Type the following, replacing `Exec=` with the actual location of STS:
 
-Alternatively, run the following command to install Eclipse from a terminal:
-
-```bash
-flatpak install flathub org.eclipse.Java
+```ini
+[Desktop Entry]
+Name=Spring Tool Suite
+Comment=Spring Tool Suite
+Exec=/home/yourusername/Downloads/sts-4.0.1.RELEASE/SpringToolSuite4
+Icon=/home/yourusername/Downloads/sts-4.0.1.RELEASE/icon.xpm
+StartupNotify=true
+Terminal=false
+Type=Application
+Keywords=Java,Eclipse,Spring,IDE,Development
+Categories=Development;IDE;Java;
 ```
 
-## Install JetBrains Rider, GoLand, and IntelliJ IDEA Ultimate
+7. Press <kbd>CTRL</kbd>+<kbd>X</kbd> to exit Nano and save when prompted
+1. Navigate to **Activities** on the main PopOS desktop and select **Show Applications**
+1. Right-click on **Spring Tool Suite** and select **Add to favorites**
+1. Open Spring Tool Suite
+1. **Window** > **Preferences** > **General** > Set the theme to "Dark"
+1. **Window** > **Preferences** > **Maven** > Select "Download repository index updates on startup"
+1. Select **Apply and Close**
 
-```bash
-flatpak install flathub com.jetbrains.Rider
-flatpak install flathub com.jetbrains.GoLand
-flatpak install flathub com.jetbrains.PyCharm-Professional
-flatpak install flathub com.jetbrains.IntelliJ-IDEA-Ultimate
-```
-
-IntelliJ Community Edition instead of Ultimate:
-
-```bash
-flatpak install flathub com.jetbrains.IntelliJ-IDEA-Community
-```
-
-## Install Postman
-
-Postman is a complete toolchain for API developers. It can be installed in one of three ways. The easiest is to open the **Pop!_Shop** and install Postman using the GUI. 
-
-> Installing Postman from **Pop!_Shop** installs from Flathub. 
-
-You may alternatively install Postman from Flathub using a terminal session. 
-
-```bash
-flatpak install flathub com.getpostman.Postman
-```
-
-## Install Visual Studio Code
+## Visual Studio Code:
 
 1. From the desktop, select **Activities** (top-left corner of your monitor) > **Pop!\_Shop**
 1. Search for "Visual Studio Code" and install it
 1. Launch Visual Studio Code
-1. Navigate **File** > **Preferences** > **Settings** and then type "telemetry"
-1. Select "off" for the **Telemetry Level** 
-1. Disable the "Dotnet Acquisition Extension: Enable Telemetry" option
+1. Disable Microsoft's telemetry by navigating to **File** > **Preferences** > **Settings** and typing "telemetry", then de-selecting "Enable Crash Reporter" and de-selecting "Enable Telemetry"
+1. Optional: While still in **Settings**, change the **Titlebar** setting to "Custom" if not done so already
 1. Optional: While still in **Settings**, change the following to "False":
    1. **Enable Natural Language Search**
    1. **Enable Experiments**
+   1. **Enable Windows Background Updates**
 1. Optional: While still in **Settings**, enable **Editor: Format on Save**. Turning this setting on is the same as running the **Format Document** command each time you save a file.
 1. Optional: While Visual Studio Code is open, select **Activities**, right-click the Visual Studio Code icon on the dock, and select **Add to favorites**.
 
-Or, to install from the command line, run:
-
-```bash
-flatpak install flathub com.visualstudio.code
-```
-
-
 The following VS Code extensions are handy:
 
-1. [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) - syntax highlighting, debugging, test runner support, and intellisense for C#
+1. [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) - syntax highlighting, debugging, test runner support, and intellisense for C#
+1. [C# XML documentation](https://marketplace.visualstudio.com/items?itemName=k--kato.docomment) - auto-generates C# XML documentation
 1. [Rust (rls)](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust) - Rust language server
 1. [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb) - for debugging Rust code on Ubuntu
-1. [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) - syntax highlighting, debugging, and intellisense for Java, plus unit testing support
+1. [Java Extension Pack](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) - syntax highlighting, debugging, and intellisense for Java, plus unit testing support
 1. [Spring Boot Extension Pack](https://marketplace.visualstudio.com/items?itemName=Pivotal.vscode-boot-dev-pack) - specific enhancements for working with Spring Boot
 1. [VS Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) - allows simultaneous editing of code files by multiple authors, like Google Docs
 1. [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
@@ -224,6 +210,7 @@ The following VS Code extensions are handy:
 1. [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 1. [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin)
 1. [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+1. [AWS Toolkit](https://marketplace.visualstudio.com/items?itemName=AmazonWebServices.aws-toolkit-vscode)
 
 There are some excellent dark theme alternatives to the VS Code default theme:
 
@@ -232,14 +219,52 @@ There are some excellent dark theme alternatives to the VS Code default theme:
 1. [Material Theme](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme)
 1. [Blueberry Dark Theme](https://marketplace.visualstudio.com/items?itemName=peymanslh.blueberry-dark-theme)
 1. [Arc+ Theme](https://marketplace.visualstudio.com/items?itemName=ph-hawkins.arc-plus)
-1. [Arc Darker Theme](https://marketplace.visualstudio.com/items?itemName=alvesvaren.arc-dark)
 
+## Postman
 
+Postman can be installed in one of three ways. The easiest is to open the **Pop!_Shop** and install Postman using the GUI. 
+
+> Installing Postman from **Pop!_Shop** installs from Flathub. 
+
+### Alternative: Install Postman from flathub using the terminal
+
+You may alternatively install Postman from Flathub using a terminal session. However, in Pop!_OS 20.04, you must first add the Flathub remote repository. Both commands are shown below:
+
+```bash
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub com.getpostman.Postman
+```
+
+### Alternative: Install Postman from .tar.gz using the terminal
+
+```bash
+sudo apt install libgconf-2-4
+cd ~/Downloads
+wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
+sudo tar -xzf postman.tar.gz -C /opt
+sudo ln -s /opt/Postman/Postman /usr/bin/postman
+
+cat > ~/.local/share/applications/postman.desktop <<EOL
+[Desktop Entry]
+Encoding=UTF-8
+Name=Postman
+Exec=postman
+Icon=/opt/Postman/app/resources/app/assets/icon.png
+Terminal=false
+Type=Application
+Categories=Development;
+EOL
+```
+
+Be sure to pin Postman by adding it to your favorites:
+
+1. Navigate to **Activities** on the main Pop_OS! desktop and select **Show Applications**
+1. Right-click on **Postman** and select **Add to favorites** 
 
 ## Java and Maven
 
 ```bash
-sudo apt install openjdk-17-jdk-headless maven
+sudo apt install openjdk-11-jdk-headless maven
 ```
 
 Run `javac -version` and look for the following output to verify success:
@@ -252,38 +277,23 @@ OpenJDK 64-Bit Server VM (build 11.0.10+9-Ubuntu-0ubuntu1.20.04, mixed mode, sha
 
 ## Go
 
-**Instructions for installing Go taken from https://go.dev/doc/install on 2024-02-18**
-
-While you _can_ install Go by running `sudo apt install golang-go`, this is known to install an older version. Instead, run the following commands, ensuring you replace the version number in the commands below with the version number you want to install. These are also the same commands you will use to update Go to a newer version.
-
 ```bash
-curl -OL https://golang.org/dl/go1.22.0.linux-amd64.tar.gz
-sha256sum go1.22.0.linux-amd64.tar.gz
-sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf go1.22.0.linux-amd64.tar.gz
+sudo apt install golang-go
 ```
 
-Run the following to ensure `go` is recognized as a terminal command:
-
-```bash
-echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.profile
-source ~/.profile
-```
-
-Run `go version` and look for `go version go1.22.0 linux/amd64` (or newer) to verify success.
-
+Run `go version` and look for `go version go1.13.8 linux/amd64` (or newer) to verify success
 
 ## Rust
 
-**Instructions for installing Rust taken from https://www.rust-lang.org/tools/install on 2024-02-18**
-
 ```bash
-curl --proto '=https' --tlsv1.3 -sSf https://sh.rustup.rs | sh
+curl https://sh.rustup.rs -sSf | sh
 ```
 
-Restart your terminal session, or run `source "$HOME/.cargo/env"`, and then run `rustc --version`. Look for `rustc 1.76.0 (07dca489a 2024-02-04)` (or newer) to verify success.
+Restart your terminal session, run `rustc --version`, and look for `rustc 1.46.0 (04488afe3 2020-08-24)` (or newer) to verify success.
 
-To update Rust: 
+> Alternatively, you may run `sudo apt install cargo`.
+
+You will want to periodically update Rust to the latest version. Do so by running:
 
 ```bash
 rustup update
@@ -301,25 +311,64 @@ To install Anaconda Python instead, see https://linuxhint.com/install_anaconda_p
 
 ## NodeJS
 
-The quick way to install NodeJS 20 (LTS):
+The quick way to install NodeJS 14 (LTS):
 
 ```bash
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&\
-sudo apt-get install -y nodejs
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt install -y nodejs npm
 ```
 
-Run `node --version`  to verify success.
+Run `node --version` and look for `v14.16.1` (or newer) to verify success.
+
+### Optional: Install NodeJS with a manual inspection of the shell script
+
+If you wish to inspect the shell script before running it:
+
+```bash
+cd ~
+curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
+nano nodesource_setup.sh
+```
+
+Run the following if you're satisfied with the script:
+
+```bash
+sudo bash nodesource_setup.sh
+sudo apt install nodejs
+```
+
+### Removing NodeJS
+
+The way in which NodeJS is installed means a few extra steps are needed to remove it:
+
+```bash
+sudo apt-get remove nodejs
+sudo apt-get remove npm
+sudo rm /etc/apt/sources.list.d/nodesource.list
+sudo apt-get update
+which node
+which nodejs
+which npm
+```
+
+The three `which` commands should all display nothing, indicating Node's successful removal.
 
 ## .NET Core
 
 ```bash
-sudo apt install dotnet-sdk-8.0
+sudo apt install apt-transport-https ca-certificates
+cd ~/Downloads
+wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+sudo apt update && sudo apt install -y dotnet-sdk-3.1 dotnet-sdk-6.0
+rm -f packages-microsoft-prod.deb
 ```
 
 Run `dotnet --list-sdks` and look for the following output to verify success:
 
 ```
-8.0.102 [/usr/lib/dotnet/sdk]
+3.1.414 [/usr/share/dotnet/sdk]
+6.0.100 [/usr/share/dotnet/sdk]
 ```
 
 ### Optional: Disable .NET Core telemetry
@@ -329,34 +378,60 @@ Run `dotnet --list-sdks` and look for the following output to verify success:
 1. Save and exit
 1. Log out and log in again
 
-## Docker Desktop
+> You can also set `DOTNET_SKIP_FIRST_TIME_EXPERIENCE` to `true` when editing `.profile` to fix the following warning that may appear during .NET Core compiles: "Permission denied to modify the '/usr/share/dotnet/sdk/NuGetFallbackFolder' folder."
 
-**The instructions for installing Docker Desktop are derived from https://docs.docker.com/desktop/install/linux-install/ and are current as of 2024-02-18**
+### Optional: Installing .NET Core preview releases
 
-Docker Desktop can now be installed on Linux. It provides the same functionality as Docker Desktop on macOS and Windows and includes a single-node Kubernetes cluster. It is recommended to either install Docker Desktop _or_ install Docker on Linux, but not both (though both can be present simultaneously).
-
-This guide has been updated to focus on installing Docker Desktop. 
-
-> You may **not** want to install Docker Desktop if you are running Pop!_OS in a virtual machine, as Docker Desktop installs its own virtual machine; this would be virtualization-within-virtualization and may cause problems. You'd alternatively want to consider installing Docker on Linux directly without "Docker Desktop". This is the traditional way Docker has been installed on Linux. Older versions of this guide describe how this can be done. See [/older-versions](/older-versions).
-
-There is no repository for installing Docker Desktop. 
-
-1. Download the `.deb` package from https://docs.docker.com/desktop/install/ubuntu/.
-1. Run `sudo apt-get install ./docker-desktop-<version>-<arch>.deb`
-1. Either open the **Docker Desktop** app that was installed, or run `systemctl --user start docker-desktop`
-
-Verify success by running `docker --version`. You should see something like the following:
+Preview releases of .NET Core are unavailable from `packages.microsoft.com` and must be installed manually. The script below assumes you've downloaded a preview release with a filename of `dotnet-sdk-3.0.100-preview8-013656-linux-x64.tar.gz`.
 
 ```
-Docker version 25.0.3, build 4debf41
+mkdir -p $HOME/dotnet && tar zxf dotnet-sdk-3.0.100-preview8-013656-linux-x64.tar.gz -C $HOME/dotnet
+export DOTNET_ROOT=$HOME/dotnet
+export PATH=$PATH:$HOME/dotnet
 ```
+
+> If you've installed a stable .NET Core release from `packages.microsoft.com`, then you will need to use a different command to update PATH. Otherwise only the stable version of .NET Core will be found at the command line. To make sure the preview release is used when running `dotnet`, instead execute `export PATH=$HOME/dotnet:$PATH`.
+
+## Docker and Docker Compose
+
+```bash
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
+
+# Running "sudo apt-key fingerprint 0EBFCD88" should display:
+
+# pub   rsa4096 2017-02-22 [SCEA]
+#       9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+# uid           [ unknown] Docker Release (CE deb) <docker@docker.com>
+# sub   rsa4096 2017-02-22 [S]
+
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt update
+sudo apt install docker-ce
+docker --version
+
+# Running "docker --version" should display "Docker version 19.03.12, build 48a66213fe" or newer
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+
+# Running "docker-compose --version" should display "docker-compose version 1.29.2, build 5becea4c"
+
+sudo usermod -aG docker $USER
+
+# Restart the machine
+```
+
+After restarting the machine, run `docker run hello-world` and look for a "Hello from Docker!" message.
 
 ## Azure CLI tools
 
 ```bash
 # Get packages needed for the install process:
-sudo apt update
-sudo apt install ca-certificates curl apt-transport-https lsb-release gnupg -y
+sudo apt-get update
+sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg
 
 # Download and install the Microsoft signing key:
 curl -sL https://packages.microsoft.com/keys/microsoft.asc |
@@ -379,11 +454,36 @@ Verify success by running `az --version` and checking that `azure-cli 2.21.0` (o
 
 ## Azure Storage Explorer
 
-Azure's desktop app for interacting with Azure Storage is cross-platform. It is available in the **Pop!\_Shop** via FlatHub. Installing it on an Ubuntu-based distribution can also be done in the terminal as follows:
+Azure's desktop app for interacting with Azure Storage is cross-platform. Installing it on an Ubuntu-based distribution can be done as follows:
 
 ```bash
-flatpak install flathub com.microsoft.AzureStorageExplorer
+sudo apt update && sudo apt install -y dotnet-sdk-2.1 build-essential libsecret-1-0 libgconf-2-4
+wget https://download.microsoft.com/download/A/E/3/AE32C485-B62B-4437-92F7-8B6B2C48CB40/StorageExplorer-linux-x64.tar.gz -O ~/Downloads/StorageExplorer-linux-x64.tar.gz
+cd ~/Downloads
+mkdir -p ~/azure-storage-explorer
+tar xvf StorageExplorer-linux-x64.tar.gz -C ~/azure-storage-explorer
+cd ~/azure-storage-explorer
+./StorageExplorer
 ```
+
+Next, create an application icon, making sure that you replace `yourusername` with your actual user name:
+
+```bash
+cat > ~/.local/share/applications/azurestorageexplorer.desktop <<EOL
+[Desktop Entry]
+Encoding=UTF-8
+Name=Azure Storage Explorer
+Comment=Azure Storage Explorer
+Exec=/home/yourusername/azure-storage-explorer/StorageExplorer
+Icon=/home/yourusername/azure-storage-explorer/resources/app/out/app/icon.png
+Terminal=false
+Type=Application
+Keywords=Azure,IDE,Development,Storage,Data
+Categories=Development;IDE;
+EOL
+```
+
+Azure Storage Explorer should now appear in your list of applications. If it doesn't appear after creating and saving the `.desktop` file, then you may need to log out and log in.
 
 ## AWS CLI tools
 
@@ -399,37 +499,13 @@ Run `aws --version` and check for `aws-cli/2.1.34 Python/3.8.8 Linux/4.4.0-19041
 
 > See https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html for additional information.
 
-## Kubernetes CLI tools (`kubectl`)
-
-**Instructions derived from https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/ on 2024-02-18**
-
-You may not need to follow these commands to install `kubectl` if you installed Docker Desktop. Run `kubectl version` to see if it's already installed. If not, follow the commands below:
-
-```bash
-sudo apt update
-sudo apt install -y apt-transport-https ca-certificates curl
-# If the folder `/etc/apt/keyrings` does not exist, it should be created before the curl command, read the note below.
-# sudo mkdir -p -m 755 /etc/apt/keyrings
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
-sudo apt update
-sudo apt install -y kubectl
-```
-
-Run `kubectl version` to verify success.
-
-
 ## GitHub CLI tools
 
-**The instructions for installing GitHub CLI tools are derived from https://github.com/cli/cli/blob/trunk/docs/install_linux.md and are current as of 2024-02-18**
-
 ```bash
-type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
-curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
-&& sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
-&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-&& sudo apt update \
-&& sudo apt install gh -y
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+sudo apt-add-repository https://cli.github.com/packages
+sudo apt update
+sudo apt install gh
 ```
 
 ## Git configuration
@@ -443,12 +519,9 @@ See [Customizing Git Configuration](https://www.git-scm.com/book/en/v2/Customizi
 
 ## SSH Keys for GitHub/GitLab
 
-**The instructions for generating SSH keys is derived from https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent. Instructions for adding an SSH key to GitHub is derived from https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account. Both are current as of 2024-02-18**
-
-1. Run `ssh-keygen -t ed25519 -C "your_email@example.com"`
+1. Run `ssh-keygen -o -t rsa -b 4096 -C "your comment goes here"`
 1. Enter a passphrase
-1. Run `ssh-add ~/.ssh/id_ed25519`
-1. Run `cat ~/.ssh/id_ed25519.pub`
+1. Run `cat ~/.ssh/id_rsa.pub`
 1. Copy the output from `cat` and paste it into GitLab and GitHub's SSH key sections for your profile
 1. Run `ssh -T git@github.com` to [verify the key is recognized and working with GitHub.com](https://help.github.com/en/github/authenticating-to-github/githubs-ssh-key-fingerprints)
 1. Run `ssh -T git@gitlab.com` to verify the key is recognized and working with GitLab
@@ -514,9 +587,9 @@ To allow USB pass-through to a guest OS in VirtualBox:
 
 ### Optional: Enable DNS over HTTPS
 
-1. Navigate to **Edit** > **Settings**
-1. In the **Privacy & Security** tab, scroll down to **Enable DNS over HTTPS** and select **Max Protection**
-1. Select "Cloudflare" as the provider
+1. Navigate to **Edit** > **Preferences**
+1. In the **General** tab, scroll down to **Network Settings** and press the **Settings** button
+1. Select **Enable DNS over HTTPS** and select "Cloudflare" as the provider
 
 ### Optional: Force GPU rendering to smooth out page scrolling
 
@@ -603,6 +676,32 @@ mkdir ~/.icons
 1. Navigate to the **Apperance** tab
 1. Select "White Sur-Dark" under **Themes** > **Applications**
 1. Close **Gnome Tweak Tool**
+
+## Installing Cairo Dock
+
+The [Cairo Dock](https://github.com/Cairo-Dock/cairo-dock-core) adds a launcher and a taskbar to your desktop.
+
+```bash
+sudo apt install cairo-dock
+```
+
+Once installed, you will want to enable it as a startup application:
+
+1. Open **Gnome Tweak Tools**
+1. Navigate to **Startup Applications**
+1. Press the **+** button to add a startup application
+1. Select **Cairo Dock**
+
+The Cairo Dock can be themed. Let's install the McOs BS theme to see how we can make Gnome look more like macOS Big Sur.
+
+1. Visit https://www.pling.com/p/1401527/. 
+1. Under **Files**, download the **mcOS-BS-Dark.tar.gz** file and save it to your **Downloads** folder.
+1. Open **Cairo Dock** (if not already open) 
+1. Right-click on the **Applications** icon. A context menu appears.
+1. Select **Cairo Dock** > **Configure**. The Cairo Dock configuration window appears.
+1. Navigate to the **Themes** tab
+1. Select the **Import** button at the bottom-right corner of the window. A file dialog appears.
+1. Select the "mcOS-BS-Dark.tar.gz" file in your **Downloads** folder and press the window's **OK** button.
 
 
 ## Installing Fonts
