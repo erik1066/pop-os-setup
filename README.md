@@ -190,10 +190,19 @@ flatpak install flathub com.getpostman.Postman
 
 ## Install Visual Studio Code
 
-1. From the desktop, select **Activities** (top-left corner of your monitor) > **Pop!\_Shop**, search for "Visual Studio Code" and install it. Alternatively, you can run this command:
+**The instructions for installing Visual Studio Code are derived from https://code.visualstudio.com/docs/setup/linux and are current as of 2024-02-19**
+
+1. Run the following commands:
 
 ```bash
-flatpak install flathub com.visualstudio.code
+sudo apt-get install wget gpg
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+rm -f packages.microsoft.gpg
+sudo apt install apt-transport-https
+sudo apt update
+sudo apt install code
 ```
 
 2. Launch Visual Studio Code
@@ -206,7 +215,7 @@ flatpak install flathub com.visualstudio.code
 1. Optional: While still in **Settings**, enable **Editor: Format on Save**. Turning this setting on is the same as running the **Format Document** command each time you save a file.
 1. Optional: While Visual Studio Code is open, select **Activities**, right-click the Visual Studio Code icon on the dock, and select **Add to favorites**.
 
-Or, to install from the command line, run:
+> While you can install Visual Studio Code from flathub via the Pop!_Shop, doing so will result in problems finding development tools like the .NET SDK. The `.deb` package in Pop!_Shop is also many versions out-of-date. The process outlined above resolves both issues.
 
 
 
