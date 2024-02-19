@@ -144,7 +144,7 @@ sudo gedit ~/.zshrc
 Find the line `plugins=(git)` and change it to include your preferred plugins. An example:
 
 ```
-plugins=(git dotnet rust rustup golang mvn npm terraform aws gradle)
+plugins=(git dotnet rust golang mvn npm terraform aws gradle)
 ```
 
 Save the file. The plugins will be applied to new terminal windows.
