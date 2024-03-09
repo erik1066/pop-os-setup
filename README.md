@@ -268,10 +268,10 @@ OpenJDK 64-Bit Server VM (build 11.0.10+9-Ubuntu-0ubuntu1.20.04, mixed mode, sha
 While you _can_ install Go by running `sudo apt install golang-go`, this is known to install an older version. Instead, run the following commands, ensuring you replace the version number in the commands below with the version number you want to install. These are also the same commands you will use to update Go to a newer version.
 
 ```bash
-curl -OL https://golang.org/dl/go1.22.0.linux-amd64.tar.gz
-sha256sum go1.22.0.linux-amd64.tar.gz
+curl -OL https://golang.org/dl/go1.22.1.linux-amd64.tar.gz
+sha256sum go1.22.1.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf go1.22.0.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.22.1.linux-amd64.tar.gz
 ```
 
 Run the following to ensure `go` is recognized as a terminal command:
