@@ -281,8 +281,13 @@ echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.profile
 source ~/.profile
 ```
 
-Run `go version` and look for `go version go1.22.0 linux/amd64` (or newer) to verify success.
+Run `go version` and look for `go version go1.22.1 linux/amd64` (or newer) to verify success.
 
+[Delve](https://github.com/go-delve/delve) is a debugger for Go. You can install it by running the following command:
+
+```bash
+go install github.com/go-delve/delve/cmd/dlv@v1.22.1
+```
 
 ## Rust
 
