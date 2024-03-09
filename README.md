@@ -161,20 +161,20 @@ Alternatively, run the following command to install Eclipse from a terminal:
 flatpak install flathub org.eclipse.Java
 ```
 
-## Install JetBrains Rider, GoLand, and IntelliJ IDEA Ultimate
+## Install JetBrains products (Rider, GoLand, IntelliJ IDEA Ultimate, etc)
+
+**The instructions for installing JetBrains products are derived from https://www.jetbrains.com/help/idea/installation-guide.html#toolbox and are current as of 2024-03-09**
+
+1. Visit https://www.jetbrains.com/toolbox/app/ and download the JetBrains Toolbox app.
+1. Run the following commands, replacing the file name in the example with the file name you downloaded:
 
 ```bash
-flatpak install flathub com.jetbrains.Rider
-flatpak install flathub com.jetbrains.GoLand
-flatpak install flathub com.jetbrains.PyCharm-Professional
-flatpak install flathub com.jetbrains.IntelliJ-IDEA-Ultimate
+sudo tar -xzf jetbrains-toolbox-2.2.2.20062.tar.gz -C /opt
+cd /opt/jetbrains-toolbox-2.2.2.20062
+./jetbrains-toolbox
 ```
 
-IntelliJ Community Edition instead of Ultimate:
-
-```bash
-flatpak install flathub com.jetbrains.IntelliJ-IDEA-Community
-```
+3. Select the product that you want to install.
 
 ## Install Postman
 
@@ -451,6 +451,8 @@ git config --global user.email yourname@yourdomain.com
 ```
 
 See [Customizing Git Configuration](https://www.git-scm.com/book/en/v2/Customizing-Git-Git-Configuration) for more details. You can edit the global Git config file by running `gedit ~/.gitconfig` in a terminal window.
+
+> Tip: Remember that you can include a longer commit message by using a second `-m` in your command. Example: `git commit -m "The short message, best ~50 characters" -m "The extended description that can go on however long you want."`
 
 ## SSH Keys for GitHub/GitLab
 
