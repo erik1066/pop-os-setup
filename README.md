@@ -265,7 +265,7 @@ OpenJDK 64-Bit Server VM (build 11.0.10+9-Ubuntu-0ubuntu1.20.04, mixed mode, sha
 
 **Instructions for installing Go taken from https://go.dev/doc/install on 2024-02-18**
 
-While you _can_ install Go by running `sudo apt install golang-go`, this is known to install an older version. Instead, run the following commands, ensuring you replace the version number in the commands below with the version number you want to install. These are also the same commands you will use to update Go to a newer version.
+While you _can_ install Go via `apt`, doing so installs an oudated version. Run the following commands instead, ensuring you replace the version number in the commands below with the version number you want to install. These are also the same commands you will use to update Go to a newer version.
 
 ```bash
 curl -OL https://golang.org/dl/go1.22.1.linux-amd64.tar.gz
@@ -274,20 +274,41 @@ sudo rm -rf /usr/local/go
 sudo tar -C /usr/local -xzf go1.22.1.linux-amd64.tar.gz
 ```
 
-Run the following to ensure `go` is recognized as a terminal command:
+Run the following command to verify success:
 
 ```bash
-echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.profile
+go version
+``` 
+
+Look for `go version go1.22.1 linux/amd64` (or newer) to verify success.
+
+Set the following environment variables if this is the first time you're installing Go. _You do not need to repeat this step if you're upgrading Go._
+
+```bash
+echo "export PATH=$PATH:$(go env GOPATH)/bin:/usr/local/go/bin" >> ~/.profile
 source ~/.profile
 ```
-
-Run `go version` and look for `go version go1.22.1 linux/amd64` (or newer) to verify success.
 
 [Delve](https://github.com/go-delve/delve) is a debugger for Go. You can install it by running the following command:
 
 ```bash
 go install github.com/go-delve/delve/cmd/dlv@v1.22.1
 ```
+
+Run the following command to check that `dlv` is installed and you're on an up-to-date version:
+
+```bash
+dlv version
+```
+
+You should see the following after running `dlv version`:
+
+```
+Delve Debugger
+Version: 1.22.1
+Build: $Id: 0c3470054da6feac5f6dcf3e3e5144a64f7a9a48
+```
+
 
 ## Rust
 
