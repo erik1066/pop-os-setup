@@ -718,3 +718,40 @@ Run `sudo apt update && sudo apt upgrade -y` after OS configuration.
 ### Taking VM snapshots in `virt-manager`
 
 Snapshots can be taken in `virt-manager` just like in Virtual Box. You must navigate into the VM window (not the Virtual Machine Manager window) and select the **Manage VM Snapshots** icon at the far right of the toolbar.
+
+# Set up and connect to MySQL Server running in Docker
+
+One can run MySQL Server in a Docker container rather than installing MySQL locally. Start a MySQL Docker container by running the following two commands:
+
+```bash
+docker network create -d bridge my-bridge-network
+docker run --network my-bridge-network --name go-test-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
+```
+
+Next, start a _second_ MySQL container that connects to the first:
+
+```bash
+docker run -it --network my-bridge-network --rm mysql mysql -hgo-test-mysql -uroot -pmy-secret-pw
+```
+
+You should now see a `mysql>` prompt. Type `exit` to return to the terminal. Exiting destroys this second container, so to get another MySQL prompt you will need to re-run the above command.
+
+An empty database server is probably not that handy. To load a `.sql` database into the first MySQL container, named `go-test-mysql` in the commands above, you can issue the command below. Replace the `/home/your-username/databases/data.sql` path with an actual path to a `.sql` file on your file system.
+
+```bash
+docker exec -i go-test-mysql sh -c 'exec mysql -uroot -p"my-secret-pw"' < /home/your-username/databases/data.sql
+```
+
+Now run the second Docker container again using the same command as before:
+
+```bash
+docker run -it --network my-bridge-network --rm mysql mysql -hgo-test-mysql -uroot -pmy-secret-pw
+```
+
+You should once again see a `mysql>` prompt. 
+
+1. Enter `SELECT DATABASE();` to see what database(s) are in your server. 
+1. Enter `use your-database-name` to open a database from the list, replacing `your-database-name` with the name of one of the databases listed in the output of the previous step.
+1. Enter `SHOW TABLES();` to see what tables exist in this database.
+
+You can now run `SELECT` and other queries against the database. Be sure to end all of your commands with a `;`.
