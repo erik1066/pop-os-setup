@@ -721,12 +721,16 @@ Snapshots can be taken in `virt-manager` just like in Virtual Box. You must navi
 
 # Set up and connect to MySQL Server running in Docker
 
+**Instructions derived from https://hub.docker.com/_/mysql using MySQL 8.3.0 and are current as of 2024-03-11**
+
 One can run MySQL Server in a Docker container rather than installing MySQL locally. Start a MySQL Docker container by running the following two commands:
 
 ```bash
 docker network create -d bridge my-bridge-network
-docker run --network my-bridge-network --name go-test-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
+docker run --network my-bridge-network -p 3306:3306 --name go-test-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
 ```
+
+> The `-p 3306:3306` is what allows you to connect to this MySQL container from the host system, such as what you might do when developing an app.
 
 Next, start a _second_ MySQL container that connects to the first:
 
@@ -734,7 +738,7 @@ Next, start a _second_ MySQL container that connects to the first:
 docker run -it --network my-bridge-network --rm mysql mysql -hgo-test-mysql -uroot -pmy-secret-pw
 ```
 
-You should now see a `mysql>` prompt. Type `exit` to return to the terminal. Exiting destroys this second container, so to get another MySQL prompt you will need to re-run the above command.
+You should now see a `mysql>` prompt. Type `exit` to return to the terminal. Exiting destroys this second container, so to get another MySQL prompt you will need to re-run the above command. This is a nice way to query the MySQL database without needing to install MySQL command line tools.
 
 An empty database server is probably not that handy. To load a `.sql` database into the first MySQL container, named `go-test-mysql` in the commands above, you can issue the command below. Replace the `/home/your-username/databases/data.sql` path with an actual path to a `.sql` file on your file system.
 
@@ -751,7 +755,70 @@ docker run -it --network my-bridge-network --rm mysql mysql -hgo-test-mysql -uro
 You should once again see a `mysql>` prompt. 
 
 1. Enter `SELECT DATABASE();` to see what database(s) are in your server. 
-1. Enter `use your-database-name` to open a database from the list, replacing `your-database-name` with the name of one of the databases listed in the output of the previous step.
+1. Enter `use yourdatabasename` to open a database from the list, replacing `yourdatabasename` with the name of one of the databases listed in the output of the previous step.
 1. Enter `SHOW TABLES();` to see what tables exist in this database.
 
 You can now run `SELECT` and other queries against the database. Be sure to end all of your commands with a `;`.
+
+Here's an example of how you can connect to this database and test the connection in a simple GoLang app:
+
+```golang
+package main
+
+import (
+	"database/sql"
+	"fmt"
+	"log"
+
+	"github.com/go-sql-driver/mysql"
+)
+
+var db *sql.DB
+
+func main() {
+	dsn := mysql.Config{
+		User:   "root",
+		Passwd: "my-secret-pw",
+		Net:    "tcp",
+		Addr:   "127.0.0.1:3306",
+		DBName: "yourdatabasename",
+	}
+
+	var err error
+	db, err = sql.Open("mysql", dsn.FormatDSN())
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer db.Close()
+
+	pingErr := db.Ping()
+	if pingErr != nil {
+		log.Fatal(pingErr)
+	} else {
+		fmt.Println("Connected!")
+	}
+}
+```
+
+# Set up and connect to MariaDB Server running in Docker
+
+**Instructions derived from https://hub.docker.com/_/mariadb using MariaDB 11.4.1 and are current as of 2024-03-11**
+
+One can run MariaDB in a Docker container rather than installing MariaDB locally. Start a Maria Docker container by running the following two commands:
+
+```bash
+docker network inspect my-bridge-network >/dev/null 2>&1 || docker network create --driver bridge my-bridge-network
+docker run --detach --name some-mariadb --network my-bridge-network -p 3306:3306 --env MARIADB_ROOT_PASSWORD=my-secret-pw  mariadb:latest
+```
+
+> The `-p 3306:3306` is what allows you to connect to this MariaDB container from the host system, such as what you might do when developing an app.
+
+Next, start a _second_ MariaDB container that connects to the first:
+
+```bash
+docker run -it --network my-bridge-network --rm mariadb mariadb -hsome-mariadb -uroot -pmy-secret-pw
+```
+
+You should now see a `MariaDB [(none)]>` prompt. Type `\s` and press **Enter** to verify success. Type `exit` to return to the terminal.
+
