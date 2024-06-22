@@ -244,7 +244,7 @@ There are some excellent dark theme alternatives to the VS Code default theme:
 1. [Blueberry Dark Theme](https://marketplace.visualstudio.com/items?itemName=peymanslh.blueberry-dark-theme)
 1. [Arc+ Theme](https://marketplace.visualstudio.com/items?itemName=ph-hawkins.arc-plus)
 1. [Arc Darker Theme](https://marketplace.visualstudio.com/items?itemName=alvesvaren.arc-dark)
-
+1. [Neon City](https://marketplace.visualstudio.com/items?itemName=lakshits11.neon-city)
 
 
 ## Java and Maven
