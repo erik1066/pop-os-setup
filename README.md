@@ -868,3 +868,32 @@ docker run -it --network my-bridge-network --rm mariadb mariadb -hsome-mariadb -
 
 You should now see a `MariaDB [(none)]>` prompt. Type `\s` and press **Enter** to verify success. Type `exit` to return to the terminal.
 
+# Resolve Bluetooth issues
+
+This section is if you're having trouble pairing Bluetooth devices. Edit this file first:
+
+```sh
+sudo nano /etc/bluetooth/main.conf
+```
+
+Find the line `#ControllerMode = dual`. Uncomment and replace `dual` with `bredr`. This is a mode that has higher compatibility with more devices.
+
+Save the file and exit.
+
+Apply the changes:
+
+```sh
+sudo service bluetooth restart
+```
+
+You can scan for Bluetooth devices by running this command:
+
+```sh
+bluetoothctl scan on
+```
+
+And you can pair with a device by its address:
+
+```sh
+bluetoothctl pair [device address]
+```
