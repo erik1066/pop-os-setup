@@ -263,15 +263,15 @@ OpenJDK 64-Bit Server VM (build 11.0.10+9-Ubuntu-0ubuntu1.20.04, mixed mode, sha
 
 ## Go
 
-**Instructions for installing Go taken from https://go.dev/doc/install on 2024-02-18**
+**Instructions for installing Go taken from https://go.dev/doc/install on 2024-06-22**
 
 While you _can_ install Go via `apt`, doing so installs an oudated version. Run the following commands instead, ensuring you replace the version number in the commands below with the version number you want to install. These are also the same commands you will use to update Go to a newer version.
 
 ```bash
-curl -OL https://golang.org/dl/go1.22.1.linux-amd64.tar.gz
-sha256sum go1.22.1.linux-amd64.tar.gz
+curl -OL https://golang.org/dl/go1.22.4.linux-amd64.tar.gz
+sha256sum go1.22.4.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf go1.22.1.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.22.4.linux-amd64.tar.gz
 ```
 
 Run the following command to verify success:
@@ -280,7 +280,7 @@ Run the following command to verify success:
 go version
 ``` 
 
-Look for `go version go1.22.1 linux/amd64` (or newer) to verify success.
+Look for `go version go1.22.4 linux/amd64` (or newer) to verify success.
 
 Set the following environment variables if this is the first time you're installing Go. _You do not need to repeat this step if you're upgrading Go._
 
@@ -366,11 +366,42 @@ Run `dotnet --list-sdks` and look for the following output to verify success:
 1. Save and exit
 1. Log out and log in again
 
+## Podman
+
+**The instructions for installing Podman are derived from https://podman-desktop.io/downloads and are current as of 2024-06-22**
+
+Podman is an open source alternative to Docker Desktop. To install Podman Desktop client:
+
+```
+flatpak install flathub io.podman_desktop.PodmanDesktop
+```
+
+To install Podman itself:
+
+```
+sudo apt-get update
+sudo apt-get -y install podman
+```
+
+Podman commands are similar to Docker commands. Example: `podman compose up` instead of `docker-compose up` and `podman ps` instead of `docker ps`. Podman also installs `kubectl` if you select the Kubernetes extension on initial setup.
+
+Run `podman version` and look for the following:
+
+```
+Version:      3.4.4
+API Version:  3.4.4
+Go Version:   go1.18.1
+Built:        Wed Dec 31 19:00:00 1969
+OS/Arch:      linux/amd64
+```
+
+A Podman tutorial is available at https://github.com/containers/podman/blob/main/docs/tutorials/podman_tutorial.md.
+
 ## Docker Desktop
 
 **The instructions for installing Docker Desktop are derived from https://docs.docker.com/desktop/install/linux-install/ and are current as of 2024-02-18**
 
-Docker Desktop can now be installed on Linux. It provides the same functionality as Docker Desktop on macOS and Windows and includes a single-node Kubernetes cluster. It is recommended to either install Docker Desktop _or_ install Docker on Linux, but not both (though both can be present simultaneously).
+As an alternative to Podman Desktop, Docker Desktop can now be installed on Linux. It provides the same functionality as Docker Desktop on macOS and Windows and includes a single-node Kubernetes cluster. It is recommended to either install Docker Desktop _or_ install Docker on Linux, but not both (though both can be present simultaneously).
 
 This guide has been updated to focus on installing Docker Desktop. 
 
