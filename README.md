@@ -642,6 +642,17 @@ The `launch.json` file needed to debug using Chromium is shown below:
 
 ## Installing and Enabling Themes
 
+**The instructions for enabling and installing themes are derived from https://ubuntuhandbook.org/index.php/2022/05/install-themes-ubuntu-22-04/ and are current as of 2024-06-22**
+
+We need to first install shell extensions and an extension manager:
+
+```bash
+ sudo apt install gnome-shell-extensions 
+ sudo apt install gnome-shell-extension-manager
+ ```
+
+Next, open the **Extension Manager** app and navigate to **Browse**. Select **Install** next to the "User Themes" list item. Wait for this to finish and then close the Extension Manager app.
+ 
 Some themes are available in the central repos. For instance, to install the excellent Arc theme, simply run `sudo apt install arc-theme`. "Arc-Dark" is then available as a theme in **Gnome Tweak Tool**.
 
 More themes are available for download on pling.com. For these, extra steps are required to install:
@@ -655,14 +666,14 @@ mkdir ~/.icons
 
 2. Download a Gnome theme from Pling to your `Downloads` folder. (We'll use the [WhiteSur GTK theme](https://www.pling.com/p/1403328/))
 1. Extract the contents of the `.tar.xz` to the `.themes` folder
-1. Download a Gnome icon theme from Pling to your `Downloads` folder. (We'll use the [Big Sur Icon Theme](https://www.pling.com/p/1399044/))
+1. Download a Gnome icon theme from Pling to your `Downloads` folder. (We'll use the [Tela Icon Theme](https://www.pling.com/p/1279924))
 1. Extract the contents of the `.tar.xz` to the `.icons` folder
-1. Open the **Gnome Tweak Tool**
-1. Navigate to the **Extensions** tab
-1. Enable **User Themes**
+1. Open the **Tweaks Tool**
 1. Navigate to the **Apperance** tab
 1. Select "White Sur-Dark" under **Themes** > **Applications**
-1. Close **Gnome Tweak Tool**
+1. Select "White Sur-Dark" under **Themes** > **Shell**
+1. Select "Tela-dark" under **Themes** > **Icons**
+1. Close **Tweak Tool**
 
 
 ## Installing Fonts
