@@ -505,6 +505,7 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 ```bash
 git config --global user.name "Your Name"
 git config --global user.email yourname@yourdomain.com
+git config --global init.defaultBranch main
 ```
 
 See [Customizing Git Configuration](https://www.git-scm.com/book/en/v2/Customizing-Git-Git-Configuration) for more details. You can edit the global Git config file by running `gedit ~/.gitconfig` in a terminal window.
