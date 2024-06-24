@@ -421,29 +421,19 @@ Docker version 25.0.3, build 4debf41
 
 ## Azure CLI tools
 
+**The instructions for installing Azure CLI tools are derived from https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt&view=azure-cli-latest and are current as of 2024-06-24**
+
+The simplest way to install the Azure CLI tools:
+
 ```bash
-# Get packages needed for the install process:
-sudo apt update
-sudo apt install ca-certificates curl apt-transport-https lsb-release gnupg -y
-
-# Download and install the Microsoft signing key:
-curl -sL https://packages.microsoft.com/keys/microsoft.asc |
-    gpg --dearmor |
-    sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
-
-# Add the Azure CLI software repository:
-AZ_REPO=$(lsb_release -cs)
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" |
-    sudo tee /etc/apt/sources.list.d/azure-cli.list
-
-# Update repository information and install the azure-cli package:
-sudo apt-get update
-sudo apt-get install azure-cli
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 ```
 
-Verify success by running `az --version` and checking that `azure-cli 2.21.0` (or newer) appears somewhere in the output. Additionally, the output should indicate that `Your CLI is up-to-date`.
+Verify success by running `az --version` and checking that `azure-cli 2.61.0` (or newer) appears somewhere in the output. Additionally, the output should indicate that `Your CLI is up-to-date`.
 
-> See [Install Azure CLI with apt](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest) for further information.
+You can periodically run `az upgrade` to upgrade the Azure CLI tools.
+
+> See [Install Azure CLI with apt](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest) for further information and alternative installation methods.
 
 ## Azure Storage Explorer
 

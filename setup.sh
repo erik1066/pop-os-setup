@@ -116,6 +116,13 @@ source ~/.profile
 
 
 # ------------------------------------
+# Install Azure CLI tools
+# ------------------------------------
+
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+
+# ------------------------------------
 # Install GitHub CLI tools:
 # ------------------------------------
 
