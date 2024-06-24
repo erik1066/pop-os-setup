@@ -419,6 +419,20 @@ Verify success by running `docker --version`. You should see something like the 
 Docker version 25.0.3, build 4debf41
 ```
 
+## Helm
+
+**The instructions for installing Helm are derived from https://helm.sh/docs/intro/install/ and are current as of 2024-06-24**
+
+Install Helm by issuing the following commands:
+
+```bash
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+```
+
+Run `helm version` to verify success.
+
 ## Azure CLI tools
 
 **The instructions for installing Azure CLI tools are derived from https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt&view=azure-cli-latest and are current as of 2024-06-24**
