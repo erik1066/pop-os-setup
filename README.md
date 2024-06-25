@@ -902,3 +902,93 @@ And you can pair with a device by its address:
 ```sh
 bluetoothctl pair [device address]
 ```
+
+# Configure a hardware security key
+
+**Instructions derived from https://support.yubico.com/hc/en-us/articles/360016649099-Ubuntu-Linux-Login-Guide-U2F on 2024-06-24**
+
+Let's install some needed packages:
+
+```bash
+sudo apt install libpam-u2f libu2f-udev libpam-yubico yubikey-manager
+```
+
+Plug in your USB key and run this command:
+
+```bash
+ykman list --serials
+```
+
+If a serial number was displayed then the key software is working correctly and has detected and identified your key.
+
+Now run the following command, replacing `12345` with the serial number from the last command's output.
+
+```bash
+ykman --device 12345
+```
+
+You should see output similar to the following:
+
+```
+Device type: [Type of key you have]
+Serial number: 12345
+Firmware version: x.x.x
+Form factor: Keychain (USB-x)
+Enabled USB interfaces: ...
+...
+```
+
+We can now proceed that we know everything is working. 
+
+It's a good idea to set a FIDO PIN for your hardware security keys. PINs are optional but recommended in the event the keys are stolen. Some websites will require the use of the PIN to use the key but others may not. Unlike a password, however, the PIN stays on your key and is not transmitted to the website or web service. 
+
+> Warning: With YubiKeys, 8 failed PIN attempts will erase the key, so be warned if you set a PIN. Have backups and memorize your PIN code.
+
+> PINs can include letters and other characters, not just numbers. The max length of a PIN for YubiKeys is quite large, around 256 characters total.
+
+> Warning: If you already have a PIN and you change it, it will erase all access credentials previously stored on the key. Do not change the PIN without considering this first!
+
+Issue this command to set a PIN for the first time:
+
+```bash
+ykman fido access change-pin
+```
+
+Or this command to change a PIN:
+
+```bash
+$ ykman fido access change-pin --pin 123456 --new-pin 456789
+```
+
+Now let's move on to registering the key with the OS. First execute another command to create a special folder:
+
+```bash
+mkdir -p ~/.config/Yubico
+```
+
+> The -p flag in `mkdir` signals to create the parent folder if it doesn't already exist.
+
+Now insert your hardware security key and run the following command:
+
+```bash
+pamu2fcfg > ~/.config/Yubico/u2f_keys
+```
+
+Touch the key (e.g. if you have a YubiKey with this feature) and the command should finish.
+
+For your second, backup key, you will remove the first key and insert the backup. Now run this __different__ command (not the previous command).
+
+```bash
+pamu2fcfg -n >> ~/.config/Yubico/u2f_keys
+```
+
+Again, touch the key (e.g. if you have a YubiKey with this feature) and the command should finish. Both primary and secondary keys are now configured in Linux.
+
+We can optionally move the file to a safer location, one that requires `sudo` to modify. This is more secuire than the home directory.
+
+```bash
+sudo mkdir /etc/Yubico
+sudo mv  ~/.config/Yubico/u2f_keys /etc/Yubico/u2f_keys
+```
+
+Your key is now setup such that you can require it's use for `sudo` access, LUKS, GDM, TTY, SSH access, and more. 
