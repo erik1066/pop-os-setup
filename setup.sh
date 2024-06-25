@@ -114,6 +114,14 @@ sudo tar -C /usr/local -xzf go1.22.4.linux-amd64.tar.gz
 echo "export PATH=$PATH:$(go env GOPATH)/bin:/usr/local/go/bin" >> ~/.profile
 source ~/.profile
 
+# ------------------------------------
+# Install Helm
+# ------------------------------------
+
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+
 
 # ------------------------------------
 # Install Azure CLI tools
