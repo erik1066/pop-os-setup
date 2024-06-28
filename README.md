@@ -701,7 +701,7 @@ Open **Font Manager** and press the **+** button to add a new font. Navigate to 
 
 Open **Tweak Tool** and open the **Fonts** tab. Select "Overpass" from the **Interface Text** drop-down list. The changes should be visible immediately. 
 
-> If you ever want to go back to the default interface font, it's "Fira Sands Book" at size 10.
+> If you ever want to go back to the default interface font, it's "Fira Sans Book" at size 10.
 
 > Some custom fonts, including "Overpass", may look better with **Hinting** set to "None".
 
