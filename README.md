@@ -691,7 +691,11 @@ sudo apt install font-manager
 
 Let's install Red Hat's free Overpass font. It can be downloaded or cloned: https://github.com/RedHatOfficial/Overpass. 
 
-Other good font replacements are [Source Sans Pro](https://github.com/adobe-fonts/source-sans), [Source Code Pro](https://github.com/adobe-fonts/source-code-pro), and [Inconsolata](https://github.com/googlefonts/Inconsolata).
+Other good font replacements are:
+- [Source Sans Pro](https://github.com/adobe-fonts/source-sans)
+- [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
+- [Inconsolata](https://github.com/googlefonts/Inconsolata)
+- [Inter](https://fonts.google.com/specimen/Inter)
 
 Open **Font Manager** and press the **+** button to add a new font. Navigate to the extracted ZIP file (or cloned git repo) and import either the OTF or TTF files, whichever you prefer.
 
