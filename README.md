@@ -222,6 +222,8 @@ sudo apt install code
 
 The following VS Code extensions are handy:
 
+1. [HashiCorp Terraform](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform)
+1. [Go](https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go)
 1. [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) - syntax highlighting, debugging, test runner support, and intellisense for C#
 1. [Rust (rls)](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust) - Rust language server
 1. [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb) - for debugging Rust code on Ubuntu
@@ -231,7 +233,6 @@ The following VS Code extensions are handy:
 1. [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 1. [JavaScript Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
 1. [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-1. [Go](https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go)
 1. [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 1. [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin)
 1. [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
@@ -246,6 +247,17 @@ There are some excellent dark theme alternatives to the VS Code default theme:
 1. [Arc Darker Theme](https://marketplace.visualstudio.com/items?itemName=alvesvaren.arc-dark)
 1. [Neon City](https://marketplace.visualstudio.com/items?itemName=lakshits11.neon-city)
 
+## Terraform
+
+**Instructions for installing Terraform taken from https://developer.hashicorp.com/terraform/install on 2024-06-29**
+
+```bash
+wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install terraform
+```
+
+Run `terraform --version` to verify the installation was a success.
 
 ## Java and Maven
 
