@@ -471,17 +471,28 @@ flatpak install flathub com.microsoft.AzureStorageExplorer
 
 ## AWS CLI tools
 
+**The instructions for installing AWS CLI tools are derived from https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html and are current as of 2024-06-29**
+
 The following script installs v2 of the AWS CLI tools:
 
 ```bash
 sudo apt install -y unzip
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
 sudo ./aws/install
 ```
 
-Run `aws --version` and check for `aws-cli/2.1.34 Python/3.8.8 Linux/4.4.0-19041-Microsoft exe/x86_64.ubuntu.20 prompt/off` to verify success.
+Run `aws --version` and check for `aws-cli/2.17.5 Python/3.11.8 Linux/6.9.3-76060903-generic exe/x86_64.pop.22` to verify success.
 
-> See https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html for additional information.
+To update AWS CLI, add your existing symlink and installer information to construct the install command. This is done using the `--bin-dir`, `--install-dir`, and `--update` parameters. The following command block uses an example symlink of `/usr/local/bin` and example installer location of `/usr/local/aws-cli`. These locations are the defaults that would have been used during installation unless you specified otherwise.
+
+```bash
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
+```
+
+See https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html for additional information.
 
 ## Kubernetes CLI tools (`kubectl`)
 
