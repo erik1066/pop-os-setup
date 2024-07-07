@@ -428,6 +428,24 @@ groups "$USER"
 4. Log out and log in to Pop!_OS.
 5. Run Wireshark and capture some packets.
 
+## Set Wireshark to Dark Mode
+
+**The following instructions are derived from a [response to a GitHub issue](https://github.com/pop-os/shell/issues/1642#issuecomment-2136726171).**
+
+By default, Wireshark `4.2.5` does not respect the Dark mode selector in Pop!_OS `22.04` or Dark mode themes like Nordic-darker-v40 or Arc Dark. We can fix this, albeit partially:
+
+1. Install the Adwaita-qt theme:
+
+```bash
+sudo apt install adwaita-qt
+```
+
+2. Run Wireshark using the following terminal command:
+
+```bash
+QT_STYLE_OVERRIDE=Adwaita-Dark wireshark
+```
+
 
 ## Podman
 
