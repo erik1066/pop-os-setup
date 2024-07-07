@@ -378,6 +378,57 @@ Run `dotnet --list-sdks` and look for the following output to verify success:
 1. Save and exit
 1. Log out and log in again
 
+## Wireshark
+
+There are several ways to install Wireshark from `apt`. 
+
+### Option #1: Install from ppa
+
+The latest, or at least close to latest, version of Wireshark can be installed via:
+
+```bash
+sudo add-apt-repository ppa:wireshark-dev/stable
+sudo apt update
+sudo apt install wireshark
+```
+
+### Option #2: Install from `apt`:
+
+An older version of Wireshark can be installed by running:
+
+```bash
+sudo apt install wireshark
+```
+
+This will likely install an older version versus using installtion option #1 above. 
+
+> At the time of writing this section, option #1 installs version 4.2.5 while option #2 installs Wireshark 3.6.
+
+
+### Configure Wireshark
+
+1. It is recommended to choose **Yes** when the installer asks: "Should non-superusers be able to capture packets?" If you fail to select **Yes** then you will need root privileges to run Wireshark.
+
+> Requiring root privileges means running `wireshark` with `sudo`.
+
+> If you want to change your answer from **No** to **Yes** in the future, run `sudo dpkg-reconfigure wireshark-common`.
+
+2. Next, add your user to the `wireshark` group. Run this command exactly as-is:
+
+```bash
+sudo usermod -a -G wireshark "$USER"
+```
+
+3. Ensure your username is part of the `wireshark` group. You should see your username when you run the below command:
+
+```bash
+groups "$USER"
+```
+
+4. Log out and log in to Pop!_OS.
+5. Run Wireshark and capture some packets.
+
+
 ## Podman
 
 **The instructions for installing Podman are derived from https://podman-desktop.io/downloads and are current as of 2024-06-22**
@@ -409,7 +460,7 @@ OS/Arch:      linux/amd64
 
 A Podman tutorial is available at https://github.com/containers/podman/blob/main/docs/tutorials/podman_tutorial.md.
 
-## Docker Desktop
+### Podman alternative: Docker Desktop
 
 **The instructions for installing Docker Desktop are derived from https://docs.docker.com/desktop/install/linux-install/ and are current as of 2024-02-18**
 
