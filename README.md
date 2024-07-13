@@ -685,6 +685,10 @@ Firefox in Gnome can experience screen tearing and other performance-inhibiting 
 1. Copy and paste `layers.force-active` into the search box and **Enable** it
 1. Restart Firefox and observe smoother scrolling behavior
 
+### Optional: Enable enhanced privacy protections
+
+See https://wiki.mozilla.org/Privacy/Privacy_Task_Force/firefox_about_config_privacy_tweeks for advanced privacy-related Firefox configuration options.
+
 ## Chromium
 
 1. From the desktop, select **Activities** (top-left corner of your monitor) > **Pop!\_Shop**
