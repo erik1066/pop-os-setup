@@ -104,7 +104,7 @@ Start a new session. ZSH is now your default shell.
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-An "Oh My Zsh!... is now installed!" message should appear in the terminal output. 
+An "Oh My Zsh!... is now installed!" message should appear in the terminal output.
 
 > You may be prompted to set ZSH as your default shell.
 
@@ -178,14 +178,32 @@ cd /opt/jetbrains-toolbox-2.2.2.20062
 
 ## Install Postman
 
-Postman is a complete toolchain for API developers. It can be installed in one of three ways. The easiest is to open the **Pop!_Shop** and install Postman using the GUI. 
+Postman is a complete toolchain for API developers. It can be installed in one of three ways. The easiest is to open the **Pop!_Shop** and install Postman using the GUI.
 
-> Installing Postman from **Pop!_Shop** installs from Flathub. 
+> Installing Postman from **Pop!_Shop** installs from Flathub.
 
-You may alternatively install Postman from Flathub using a terminal session. 
+You may alternatively install Postman from Flathub using a terminal session.
 
 ```bash
 flatpak install flathub com.getpostman.Postman
+```
+
+## Install Zed
+
+**The instructions for installing Zed are derived from https://zed.dev/docs/linux#zed-on-linux and are current as of 2024-07-13**
+
+Zed is a highly-efficient, cross-platform code editor written in Rust.
+
+Run the following command to install Zed:
+
+```bash
+curl https://zed.dev/install.sh | sh
+```
+
+To run Zed after installation:
+
+```bash
+~/.local/bin/zed
 ```
 
 ## Install Visual Studio Code
@@ -207,7 +225,7 @@ sudo apt install code
 
 2. Launch Visual Studio Code
 1. Navigate **File** > **Preferences** > **Settings** and then type "telemetry"
-1. Select "off" for the **Telemetry Level** 
+1. Select "off" for the **Telemetry Level**
 1. Disable the "Dotnet Acquisition Extension: Enable Telemetry" option
 1. Optional: While still in **Settings**, change the following to "False":
    1. **Enable Natural Language Search**
@@ -290,7 +308,7 @@ Run the following command to verify success:
 
 ```bash
 go version
-``` 
+```
 
 Look for `go version go1.22.4 linux/amd64` (or newer) to verify success.
 
@@ -332,7 +350,7 @@ curl --proto '=https' --tlsv1.3 -sSf https://sh.rustup.rs | sh
 
 Restart your terminal session, or run `source "$HOME/.cargo/env"`, and then run `rustc --version`. Look for `rustc 1.76.0 (07dca489a 2024-02-04)` (or newer) to verify success.
 
-To update Rust: 
+To update Rust:
 
 ```bash
 rustup update
@@ -380,7 +398,7 @@ Run `dotnet --list-sdks` and look for the following output to verify success:
 
 ## Wireshark
 
-There are several ways to install Wireshark from `apt`. 
+There are several ways to install Wireshark from `apt`.
 
 ### Option #1: Install from ppa
 
@@ -400,7 +418,7 @@ An older version of Wireshark can be installed by running:
 sudo apt install wireshark
 ```
 
-This will likely install an older version versus using installtion option #1 above. 
+This will likely install an older version versus using installtion option #1 above.
 
 > At the time of writing this section, option #1 installs version 4.2.5 while option #2 installs Wireshark 3.6.
 
@@ -484,11 +502,11 @@ A Podman tutorial is available at https://github.com/containers/podman/blob/main
 
 As an alternative to Podman Desktop, Docker Desktop can now be installed on Linux. It provides the same functionality as Docker Desktop on macOS and Windows and includes a single-node Kubernetes cluster. It is recommended to either install Docker Desktop _or_ install Docker on Linux, but not both (though both can be present simultaneously).
 
-This guide has been updated to focus on installing Docker Desktop. 
+This guide has been updated to focus on installing Docker Desktop.
 
 > You may **not** want to install Docker Desktop if you are running Pop!_OS in a virtual machine, as Docker Desktop installs its own virtual machine; this would be virtualization-within-virtualization and may cause problems. You'd alternatively want to consider installing Docker on Linux directly without "Docker Desktop". This is the traditional way Docker has been installed on Linux. Older versions of this guide describe how this can be done. See [/older-versions](/older-versions).
 
-There is no repository for installing Docker Desktop. 
+There is no repository for installing Docker Desktop.
 
 1. Download the `.deb` package from https://docs.docker.com/desktop/install/ubuntu/.
 1. Run `sudo apt-get install ./docker-desktop-<version>-<arch>.deb`
@@ -748,12 +766,12 @@ The `launch.json` file needed to debug using Chromium is shown below:
 We need to first install shell extensions and an extension manager:
 
 ```bash
- sudo apt install gnome-shell-extensions 
+ sudo apt install gnome-shell-extensions
  sudo apt install gnome-shell-extension-manager
  ```
 
 Next, open the **Extension Manager** app and navigate to **Browse**. Select **Install** next to the "User Themes" list item. Wait for this to finish and then close the Extension Manager app.
- 
+
 Some themes are available in the central repos. For instance, to install the excellent Arc theme, simply run `sudo apt install arc-theme`. "Arc-Dark" is then available as a theme in **Gnome Tweak Tool**.
 
 More themes are available for download on pling.com. For these, extra steps are required to install:
@@ -785,7 +803,7 @@ Install the **Font Manager** application:
 sudo apt install font-manager
 ```
 
-Let's install Red Hat's free Overpass font. It can be downloaded or cloned: https://github.com/RedHatOfficial/Overpass. 
+Let's install Red Hat's free Overpass font. It can be downloaded or cloned: https://github.com/RedHatOfficial/Overpass.
 
 Other good font replacements are:
 - [Source Sans Pro](https://github.com/adobe-fonts/source-sans)
@@ -795,7 +813,7 @@ Other good font replacements are:
 
 Open **Font Manager** and press the **+** button to add a new font. Navigate to the extracted ZIP file (or cloned git repo) and import either the OTF or TTF files, whichever you prefer.
 
-Open **Tweak Tool** and open the **Fonts** tab. Select "Overpass" from the **Interface Text** drop-down list. The changes should be visible immediately. 
+Open **Tweak Tool** and open the **Fonts** tab. Select "Overpass" from the **Interface Text** drop-down list. The changes should be visible immediately.
 
 > If you ever want to go back to the default interface font, it's "Fira Sans Book" at size 10.
 
@@ -903,9 +921,9 @@ Now run the second Docker container again using the same command as before:
 docker run -it --network my-bridge-network --rm mysql mysql -hgo-test-mysql -uroot -pmy-secret-pw
 ```
 
-You should once again see a `mysql>` prompt. 
+You should once again see a `mysql>` prompt.
 
-1. Enter `SELECT DATABASE();` to see what database(s) are in your server. 
+1. Enter `SELECT DATABASE();` to see what database(s) are in your server.
 1. Enter `use yourdatabasename` to open a database from the list, replacing `yourdatabasename` with the name of one of the databases listed in the output of the previous step.
 1. Enter `SHOW TABLES();` to see what tables exist in this database.
 
@@ -1038,9 +1056,9 @@ Enabled USB interfaces: ...
 ...
 ```
 
-We can now proceed that we know everything is working. 
+We can now proceed that we know everything is working.
 
-It's a good idea to set a FIDO PIN for your hardware security keys. PINs are optional but recommended in the event the keys are stolen. Some websites will require the use of the PIN to use the key but others may not. Unlike a password, however, the PIN stays on your key and is not transmitted to the website or web service. 
+It's a good idea to set a FIDO PIN for your hardware security keys. PINs are optional but recommended in the event the keys are stolen. Some websites will require the use of the PIN to use the key but others may not. Unlike a password, however, the PIN stays on your key and is not transmitted to the website or web service.
 
 > Warning: With YubiKeys, 8 failed PIN attempts will erase the key, so be warned if you set a PIN. Have backups and memorize your PIN code.
 
@@ -1091,7 +1109,7 @@ sudo mkdir /etc/Yubico
 sudo mv  ~/.config/Yubico/u2f_keys /etc/Yubico/u2f_keys
 ```
 
-Your key is now setup such that you can require it's use for `sudo` access, LUKS, GDM, TTY, SSH access, and more. 
+Your key is now setup such that you can require it's use for `sudo` access, LUKS, GDM, TTY, SSH access, and more.
 
 # Install YubiKey Manager (GUI)
 
@@ -1129,7 +1147,7 @@ With `pcscd` installed and running we can now install the YubiKey Manager (GUI) 
 
 # Install and Configure USBGuard
 
-USBGuard enables you to block USB device access. This is useful for protecting against rogue USB devices (think "BadUSB") by implementing a USB blocklist and USB device policy. 
+USBGuard enables you to block USB device access. This is useful for protecting against rogue USB devices (think "BadUSB") by implementing a USB blocklist and USB device policy.
 
 > Warning: Installing USBGuard using the steps below will create a policy that allows only currently-connected USB devices to be usable on the next boot. You can and should review this policy right after installation to ensure you can continue to use your PC. For instance, if you use hardware security keys to login, and they were not inserted at the time of USBGuard's installation, you could be locked out of your system permanently. Be cautious.
 
@@ -1252,7 +1270,7 @@ Let's authorize the device. We first need to find the device id and serial numbe
 sudo usbguard list-devices -b
 ```
 
-Note the device ID and serial number. You will need these values. Then run the command below. Before doing so, replace the `1234:5678` and `ABCDEF` with the values outputted from the `sudo usbguard list-devices -b` command. Executing this command permanently updates the `rules.conf` with an `allow` rule for that device. 
+Note the device ID and serial number. You will need these values. Then run the command below. Before doing so, replace the `1234:5678` and `ABCDEF` with the values outputted from the `sudo usbguard list-devices -b` command. Executing this command permanently updates the `rules.conf` with an `allow` rule for that device.
 
 > The `-p` flag is for permanent; leaving it off the command would make this a temporary rule that would not persist across a reboot.
 
