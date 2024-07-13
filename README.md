@@ -368,7 +368,7 @@ sudo apt install dotnet-sdk-8.0
 Run `dotnet --list-sdks` and look for the following output to verify success:
 
 ```
-8.0.105 [/usr/lib/dotnet/sdk]
+8.0.107 [/usr/lib/dotnet/sdk]
 ```
 
 ### Optional: Disable .NET Core telemetry
