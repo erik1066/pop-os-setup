@@ -1041,7 +1041,7 @@ And you can pair with a device by its address:
 bluetoothctl pair [device address]
 ```
 
-# Configure a hardware security key
+## Configure a hardware security key
 
 **Instructions derived from https://support.yubico.com/hc/en-us/articles/360016649099-Ubuntu-Linux-Login-Guide-U2F on 2024-06-24**
 
@@ -1131,7 +1131,7 @@ sudo mv  ~/.config/Yubico/u2f_keys /etc/Yubico/u2f_keys
 
 Your key is now setup such that you can require it's use for `sudo` access, LUKS, GDM, TTY, SSH access, and more.
 
-# Install YubiKey Manager (GUI)
+### Install YubiKey Manager (GUI)
 
 **Instructions derived from https://support.yubico.com/hc/en-us/articles/360016649039-Installing-Yubico-Software-on-Linux on 2024-06-26**
 
@@ -1165,7 +1165,7 @@ With `pcscd` installed and running we can now install the YubiKey Manager (GUI) 
 
 > Warning: If you already have a FIDO PIN and you change it, it will erase all access credentials previously stored on the key. Do not change the FIDO PIN without considering this first!
 
-# Install and Configure USBGuard
+## Install and Configure USBGuard
 
 USBGuard enables you to block USB device access. This is useful for protecting against rogue USB devices (think "BadUSB") by implementing a USB blocklist and USB device policy.
 
