@@ -293,15 +293,15 @@ OpenJDK 64-Bit Server VM (build 11.0.10+9-Ubuntu-0ubuntu1.20.04, mixed mode, sha
 
 ## Go
 
-**Instructions for installing Go taken from https://go.dev/doc/install on 2024-06-22**
+**Instructions for installing Go taken from https://go.dev/doc/install on 2024-08-15**
 
 While you _can_ install Go via `apt`, doing so installs an oudated version. Run the following commands instead, ensuring you replace the version number in the commands below with the version number you want to install. These are also the same commands you will use to update Go to a newer version.
 
 ```bash
-curl -OL https://golang.org/dl/go1.22.4.linux-amd64.tar.gz
-sha256sum go1.22.4.linux-amd64.tar.gz
+curl -OL https://golang.org/dl/go1.23.0.linux-amd64.tar.gz
+sha256sum go1.23.0.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf go1.22.4.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.23.0.linux-amd64.tar.gz
 ```
 
 Run the following command to verify success:
@@ -310,7 +310,7 @@ Run the following command to verify success:
 go version
 ```
 
-Look for `go version go1.22.4 linux/amd64` (or newer) to verify success.
+Look for `go version go1.23.0 linux/amd64` (or newer) to verify success.
 
 Set the following environment variables if this is the first time you're installing Go. _You do not need to repeat this step if you're upgrading Go._
 
@@ -386,7 +386,7 @@ sudo apt install dotnet-sdk-8.0
 Run `dotnet --list-sdks` and look for the following output to verify success:
 
 ```
-8.0.107 [/usr/lib/dotnet/sdk]
+8.0.108 [/usr/lib/dotnet/sdk]
 ```
 
 ### Optional: Disable .NET Core telemetry
