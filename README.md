@@ -888,7 +888,7 @@ Run `sudo apt update && sudo apt upgrade -y` after OS configuration.
 
 Snapshots can be taken in `virt-manager` just like in Virtual Box. You must navigate into the VM window (not the Virtual Machine Manager window) and select the **Manage VM Snapshots** icon at the far right of the toolbar.
 
-# Set up and connect to MySQL Server running in Docker
+## Set up and connect to MySQL Server running in Docker
 
 **Instructions derived from https://hub.docker.com/_/mysql using MySQL 8.3.0 and are current as of 2024-03-11**
 
@@ -970,7 +970,7 @@ func main() {
 }
 ```
 
-# Set up and connect to MariaDB Server running in Docker
+## Set up and connect to MariaDB Server running in Docker
 
 **Instructions derived from https://hub.docker.com/_/mariadb using MariaDB 11.4.1 and are current as of 2024-03-11**
 
@@ -991,7 +991,27 @@ docker run -it --network my-bridge-network --rm mariadb mariadb -hsome-mariadb -
 
 You should now see a `MariaDB [(none)]>` prompt. Type `\s` and press **Enter** to verify success. Type `exit` to return to the terminal.
 
-# Resolve Bluetooth issues
+## Set up and connect to PostgreSQL Server running in Docker
+
+One can run PostgreSQL in a Docker container rather than installing locally. Start a PostgreSQL Docker container by running the following two commands:
+
+```bash
+docker network inspect my-bridge-network >/dev/null 2>&1 || docker network create --driver bridge my-bridge-network
+docker run --detach --name postgres --network my-bridge-network -p 5432:5432 --env POSTGRES_PASSWORD=my-secret-pw postgres:latest
+```
+
+> The `-p 5432:5432` is what allows you to connect to this PostgreSQL container from the host system, such as what you might do when developing an app.
+
+Next, start a _second_ PostgreSQL container that connects to the first:
+
+```bash
+docker run -it --network my-bridge-network --rm --name second-postgres postgres psql -U postgres
+```
+
+You should now see a `postgres=#` prompt. Type `SELECT table_name FROM information_schema.tables;` and press **Enter** to verify success. Type `q` to exit the table list view. 
+
+
+## Resolve Bluetooth issues
 
 This section is if you're having trouble pairing Bluetooth devices. Edit this file first:
 
