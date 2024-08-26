@@ -348,13 +348,15 @@ Build: $Id: 0c3470054da6feac5f6dcf3e3e5144a64f7a9a48
 curl --proto '=https' --tlsv1.3 -sSf https://sh.rustup.rs | sh
 ```
 
-Restart your terminal session, or run `source "$HOME/.cargo/env"`, and then run `rustc --version`. Look for `rustc 1.76.0 (07dca489a 2024-02-04)` (or newer) to verify success.
+Restart your terminal session, or run `source "$HOME/.cargo/env"`, and then run `rustc --version`. Look for `rustc 1.80.1 (3f5fd8dd4 2024-08-06)` (or newer) to verify success.
 
 To update Rust:
 
 ```bash
 rustup update
 ```
+
+> You can easily uninstall Rust and Rustup by running `rustup self uninstall`.
 
 ## Python
 
