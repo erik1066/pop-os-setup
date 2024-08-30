@@ -382,7 +382,7 @@ sudo apt-get install -y nodejs
 
 Run `node --version`  to verify success.
 
-## .NET Core
+## .NET
 
 ```bash
 sudo apt install dotnet-sdk-8.0
