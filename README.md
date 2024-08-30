@@ -1,6 +1,8 @@
-# Pop!\_OS 22.04 Setup for Software Engineers
+# Pop!\_OS 22.04 Setup Guide for Software Engineers
 
 This repository contains instructions to set up [Pop!\_OS](https://system76.com/pop) for developing software in Go, Rust, C# (.NET Core), Java, Python, and NodeJS, as well as web front-ends in React. The steps below should also work for Ubuntu and most Ubuntu-based Linux distributions.
+
+> See [Fedora Workstation Setup Guide](https://github.com/erik1066/fedora-setup-guide) for a version of this guide specific to Fedora.
 
 ![Pop!_OS desktop screenshot with Tilix, Visual Studio Code, and Gnome Tweak Tool, displayed and the Arc Dark theme](images/screenshot01.png "Pop!_OS desktop screenshot with Tilix, Visual Studio Code, and Gnome Tweak Tool, displayed and the Arc Dark theme")
 
