@@ -268,6 +268,22 @@ There are some excellent dark theme alternatives to the VS Code default theme:
 1. [Arc Darker Theme](https://marketplace.visualstudio.com/items?itemName=alvesvaren.arc-dark)
 1. [Neon City](https://marketplace.visualstudio.com/items?itemName=lakshits11.neon-city)
 
+### Working with VSCode extensions from the terminal
+
+To see which VSCode extensions are installed:
+
+```bash
+code --list-extensions
+```
+
+You can install VSCode extensions from the terminal, too. Run the following commands to install HashiCorp's Terraform extension, Google's Go extension, and Microsoft's Docker extension:
+
+```bash
+code --install-extension HashiCorp.terraform
+code --install-extension golang.Go
+code --install-extension ms-azuretools.vscode-docker
+```
+
 ## Terraform
 
 **Instructions for installing Terraform taken from https://developer.hashicorp.com/terraform/install on 2024-06-29**
