@@ -410,7 +410,7 @@ Run `dotnet --list-sdks` and look for the following output to verify success:
 8.0.108 [/usr/lib/dotnet/sdk]
 ```
 
-### Optional: Disable .NET Core telemetry
+### Optional: Disable .NET telemetry
 
 1. Run `gedit ~/.profile`
 1. Type `export DOTNET_CLI_TELEMETRY_OPTOUT=true` at the bottom of the file
