@@ -171,8 +171,8 @@ flatpak install flathub org.eclipse.Java
 1. Run the following commands, replacing the file name in the example with the file name you downloaded:
 
 ```bash
-sudo tar -xzf jetbrains-toolbox-2.2.2.20062.tar.gz -C /opt
-cd /opt/jetbrains-toolbox-2.2.2.20062
+sudo tar -xzf jetbrains-toolbox-2.4.2.32922.tar.gz -C /opt
+cd /opt/jetbrains-toolbox-2.4.2.32922
 ./jetbrains-toolbox
 ```
 
