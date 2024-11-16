@@ -260,12 +260,13 @@ The following VS Code extensions are handy:
 
 There are some excellent dark theme alternatives to the VS Code default theme:
 
-1. [One Monokai Theme](https://marketplace.visualstudio.com/items?itemName=azemoh.one-monokai)
-1. [Atom One Dark Theme](https://marketplace.visualstudio.com/items?itemName=akamud.vscode-theme-onedark)
-1. [Material Theme](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme)
-1. [Blueberry Dark Theme](https://marketplace.visualstudio.com/items?itemName=peymanslh.blueberry-dark-theme)
-1. [Arc+ Theme](https://marketplace.visualstudio.com/items?itemName=ph-hawkins.arc-plus)
-1. [Arc Darker Theme](https://marketplace.visualstudio.com/items?itemName=alvesvaren.arc-dark)
+1. [Tokyo Night](https://marketplace.visualstudio.com/items?itemName=enkia.tokyo-night)
+1. [One Monokai](https://marketplace.visualstudio.com/items?itemName=azemoh.one-monokai)
+1. [Atom One Dark](https://marketplace.visualstudio.com/items?itemName=akamud.vscode-theme-onedark)
+1. [Material](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme)
+1. [Blueberry Dark](https://marketplace.visualstudio.com/items?itemName=peymanslh.blueberry-dark-theme)
+1. [Arc+](https://marketplace.visualstudio.com/items?itemName=ph-hawkins.arc-plus)
+1. [Arc Darker](https://marketplace.visualstudio.com/items?itemName=alvesvaren.arc-dark)
 1. [Neon City](https://marketplace.visualstudio.com/items?itemName=lakshits11.neon-city)
 
 ### Working with VSCode extensions from the terminal
