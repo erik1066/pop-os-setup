@@ -318,10 +318,10 @@ OpenJDK 64-Bit Server VM (build 11.0.10+9-Ubuntu-0ubuntu1.20.04, mixed mode, sha
 While you _can_ install Go via `apt`, doing so installs an oudated version. Run the following commands instead, ensuring you replace the version number in the commands below with the version number you want to install. These are also the same commands you will use to update Go to a newer version.
 
 ```bash
-curl -OL https://golang.org/dl/go1.23.0.linux-amd64.tar.gz
-sha256sum go1.23.0.linux-amd64.tar.gz
+curl -OL https://golang.org/dl/go1.23.7.linux-amd64.tar.gz
+sha256sum go1.23.7.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf go1.23.0.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.23.7.linux-amd64.tar.gz
 ```
 
 Run the following command to verify success:
@@ -330,7 +330,7 @@ Run the following command to verify success:
 go version
 ```
 
-Look for `go version go1.23.0 linux/amd64` (or newer) to verify success.
+Look for `go version go1.23.7 linux/amd64` (or newer) to verify success.
 
 Set the following environment variables if this is the first time you're installing Go. _You do not need to repeat this step if you're upgrading Go._
 
